@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap 5 with Sass Tutorial</title>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Bootstrap 5 tutorial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-lg-10">
+                <h1>Βήμα 1</h1>
+                <form action="#">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                                    
+                            <div class="card my-3">
+                                <div class="card-body">
+                                    <h5>Στοιχεία Φοιτητή</h5>
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="name-at">Όνομα</span>
+                                        <input type="text" class="form-control" placeholder="Όνομα" aria-label="Όνομα"
+                                            aria-describedby="name-at" required>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="surname-at">Επώνυμο</span>
+                                        <input type="text" class="form-control" placeholder="Επώνυμο" aria-label="Επώνυμο"
+                                            aria-describedby="surname-at" required>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="fathersname-at">Πατρώνυμο</span>
+                                        <input type="text" class="form-control" placeholder="Πατρώνυμο" aria-label="Πατρώνυμο"
+                                            aria-describedby="fathersname-at" required>
+                                    </div>
+                                            
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="gender-at">Φύλο</span>
+                                        <select class="form-select" aria-label="Φύλο"
+                                            aria-describedby="gender-at" required>
+                                            <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                                            <option value="male">Άρρεν</option>
+                                            <option value="female">Θήλυ</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="department-at">Τμήμα</span>
+                                        <select class="form-select" aria-label="Τμήμα"
+                                            aria-describedby="department-at" required>
+                                            <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                                            <option value="male">Τμήμα πληροφορικής</option>
+                                            <option value="female">Τμήμα ηλεκτρολόγων</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="studentid-at">Αριθμός μητρώου</span>
+                                        <input type="tel" class="form-control" placeholder="Αριθμός μητρώου" aria-label="Αριθμός μητρώου"
+                                            aria-describedby="studentid-at" required pattern="cs[0-9]{6}">
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="disability-at">Αναπηρία</span>
+                                        <textarea class="form-control" rows="3" placeholder="Αναπηρία" aria-label="Αναπηρία"
+                                            aria-describedby="disability-at" required></textarea>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    
+                        <div class="col-12 col-lg-6">
+                                        
+                            <div class="card my-3">
+                                <div class="card-body">
+                                    <h5>Στοιχεία Επικοινωνίας</h5>
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="phone-at">Τηλέφωνο (οικίας)</span>
+                                        <input type="tel" class="form-control" placeholder="Τηλέφωνο (οικίας)" aria-label="Τηλέφωνο (οικίας)"
+                                            aria-describedby="phone-at" required pattern="2[0-8]{1}[0-9]{8}">
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="mobile-at">Τηλέφωνο (κινητό)</span>
+                                        <input type="tel" class="form-control" placeholder="Τηλέφωνο (κινητό)" aria-label="Τηλέφωνο (κινητό)"
+                                            aria-describedby="mobile-at" required pattern="6[8-9]{1}[0-9]{8}">
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="email-at">Email</span>
+                                        <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                                            aria-describedby="email-at" required>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="address-at">Διεύθυνση</span>
+                                        <input type="text" class="form-control" placeholder="Διεύθυνση" aria-label="Διεύθυνση"
+                                            aria-describedby="address-at" required>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="postcode-at">T.K.</span>
+                                        <select class="form-select" aria-label="Πόλη"
+                                            aria-describedby="postcode-at" required>
+                                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                                            <option value="male">17673</option>
+                                            <option value="female">54631</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="city-at">Πόλη</span>
+                                        <select class="form-select" aria-label="Πόλη"
+                                            aria-describedby="city-at" disabled required>
+                                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                                            <option value="male">Καλλιθέα Αττικής</option>
+                                            <option value="female">Θεσσαλονίκη</option>
+                                            </select>
+                                    </div>
+                                    
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="city-at">Περιφέρεια</span>
+                                        <select class="form-select" aria-label="Περιφέρεια"
+                                            aria-describedby="city-at" disabled required>
+                                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                                            <option value="male">Αττική</option>
+                                            <option value="female">Κεντρική Μακεδονία</option>
+                                            </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">Επόμενο Βήμα</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    </body>
+</html>
