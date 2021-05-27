@@ -1,6 +1,5 @@
 node_modules/
 
-**/.dockerignore
 **/.env
 **/.project
 **/.settings
@@ -14,8 +13,6 @@ node_modules/
 **/azds.yaml
 **/bin
 **/charts
-**/docker-compose*
-**/Dockerfile*
 **/npm-debug.log
 **/obj
 **/secrets.dev.yaml
