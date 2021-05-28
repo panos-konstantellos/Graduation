@@ -17,3 +17,5 @@ node_modules/
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+
+**/mariadb

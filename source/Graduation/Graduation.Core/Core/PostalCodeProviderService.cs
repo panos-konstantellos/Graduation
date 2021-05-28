@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Graduation.Core
 {
-    public sealed class PostalCodeProviderService : IPostalCodeProviderService
+    internal class PostalCodeProviderService : IPostalCodeProviderService
     {
         private readonly PostalCodeContext _context;
 

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Graduation.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class IdentityContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
         }
