@@ -1,3 +1,5 @@
+using Graduation.Core.Data;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Graduation.Core
@@ -5,10 +7,43 @@ namespace Graduation.Core
     public sealed class EducationContext : DbContext
     {
         public DbSet<Language> Languages { get; set; }
+        
+        public DbSet<LocalizedResource> LocalizedResources { get; set; }
+
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<DepartmentLocalization> DepartmentLocalizations { get; set; }
         
+        public DbSet<QualificationType> QualificationTypes { get; set; }
+
+        public DbSet<QualificationTypeLocalization> QualificationTypeLocalizations { get; set; }
+
+        public DbSet<Ability> Abilities { get; set; }
+        
+        public DbSet<AbilityLocalization> AbilityLocalizations { get; set; }
+        
+        public DbSet<OperationalDifficulty> OperationalDifficulties { get; set; }
+        
+        public DbSet<OperationalDifficultyLocalization> OperationalDifficultyLocalizations { get; set; }
+        
+        public DbSet<DisabilityAid> DisabilityAids { get; set; }
+        
+        public DbSet<DisabilityAidLocalization> DisabilityAidLocalizations { get; set; }
+
+        public DbSet<LearningDifficulty> LearningDifficulties { get; set; }
+        
+        public DbSet<LearningDifficultyLocalization> LearningDifficultyLocalizations { get; set; }
+
+        public DbSet<PcInputOutputDevice> PcInputOutputDevices { get; set; }
+        
+        public DbSet<PcInputOutputDeviceLocalization> PcInputOutputDeviceLocalizations { get; set; }
+        
+        public DbSet<ExamAid> ExamAids { get; set; }
+        
+        public DbSet<ExamAidLocalization> ExamAidLocalizations { get; set; }
+        
+        public DbSet<FormSubmission> FormSubmissions { get; set; }
+
         public EducationContext(DbContextOptions<EducationContext> options) : base(options)
         {
 
@@ -291,6 +326,171 @@ namespace Graduation.Core
                     new DepartmentLocalization { Id = 26, DepartmentId = 26, LanguageId = 1, Name = "τμήμα ναυπηγών μηχανικών" },
                     new DepartmentLocalization { Id = 27, DepartmentId = 27, LanguageId = 1, Name = "τμήμα πολιτικών μηχανικών" }
                 );
+            
+            modelBuilder.Entity<LocalizedResource>()
+                .ToTable("sys_LocalizedResources")
+                .HasKey(x => x.Id);
+            
+            modelBuilder.Entity<LocalizedResource>()
+                .HasIndex(x => new {x.LanguageId, x.Key})
+                .IsUnique();
+
+            modelBuilder.Entity<QualificationType>()
+                .ToTable("edu_QualificationTypes")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<QualificationType>()
+                .HasData(
+                    new QualificationType { Id = 1, DefaultName = @"Πανελλήνιες Εξετάσεις" },
+                    new QualificationType { Id = 2, DefaultName = @"Με τον ειδικό νόμο (3%) για ΑμεΑ" },
+                    new QualificationType { Id = 3, DefaultName = @"Ομογενείς" },
+                    new QualificationType { Id = 4, DefaultName = @"Μετεγγραφή" },
+                    new QualificationType { Id = 5, DefaultName = @"Ειδικές Εξετάσεις" }
+                );
+            
+            modelBuilder.Entity<QualificationTypeLocalization>()
+                .ToTable("edu_QualificationTypeLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<QualificationTypeLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.QualificationTypeId})
+                .IsUnique();
+            
+            modelBuilder.Entity<Ability>()
+                .ToTable("edu_Abilities")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<Ability>()
+                .HasData(
+                    new Ability { Id = 1, Code = @"vision", DefaultTitle = @"Όραση", DefaultDescription = @"η ικανότητα ενός ατόμου να αναγνωρίζει και να διαβάζει χωρίς τη χρήση τεχνολογίας." },
+                    new Ability { Id = 2, Code = @"hearing", DefaultTitle = @"Ακοή", DefaultDescription = @"η ικανότητα του ατόμου να ακούει κάποιο συνομιλητή και να αντιλαμβάνεται ακουστικά σήματα." },
+                    new Ability { Id = 3, Code = @"speech", DefaultTitle = @"Ομιλία", DefaultDescription = @"η δυνατότητα του ατόμου να ομιλεί με κάποιο συνομιλητή." },
+                    new Ability { Id = 4, Code = @"stretching", DefaultTitle = @"Τέντωμα και Φτάσιμο", DefaultDescription = @"η δυνατότητα του ατόμου να εκτελεί αυτές τις ενέργειες με το επάνω μέρος του σώματος έχοντας ταυτόχρονα καλό έλεγχο της δύναμής του." },
+                    new Ability { Id = 5, Code = @"dexterity", DefaultTitle = @"Επιδεξιότητα", DefaultDescription = @"η ικανότητα του ατόμου να πιάνει κάτι, να κρατάει κάτι, να μεταφέρει, να στριφογυρίζει κάτι και να γράφει." },
+                    new Ability { Id = 6, Code = @"movement", DefaultTitle = @"Μετακίνηση", DefaultDescription = @"η ικανότητα ενός ατόμου για βηματισμό, να ανεβαίνει σκάλες, για σκαρφάλωμα, για σκύψιμο και για ισορροπία, χωρίς τη χρήση βοηθημάτων.	" },
+                    new Ability { Id = 7, Code = @"understanding", DefaultTitle = @"Κατανόηση", DefaultDescription = @"η δυνατότητα του ατόμου για κατανόηση του προφορικού και γραπτού λόγου." }
+                );
+            
+            modelBuilder.Entity<AbilityLocalization>()
+                .ToTable("edu_AbilityLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<AbilityLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.AbilityId})
+                .IsUnique();
+            
+            modelBuilder.Entity<OperationalDifficulty>()
+                .ToTable("edu_OperationalDifficulties")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<OperationalDifficulty>()
+                .HasData(
+                    new Ability { Id = 1, Code = @"library", DefaultTitle = @"Βιβλιοθήκη" },
+                    new Ability { Id = 2, Code = @"wc", DefaultTitle = @"Τουαλέτες" },
+                    new Ability { Id = 3, Code = @"elevator", DefaultTitle = @"Ανελκυστήρες" },
+                    new Ability { Id = 4, Code = @"classroom", DefaultTitle = @"Αίθουσες Διδασκαλίας" },
+                    new Ability { Id = 5, Code = @"amphitheater", DefaultTitle = @"Αμφιθέατρα" },
+                    new Ability { Id = 6, Code = @"laboratory", DefaultTitle = @"Εργαστήρια" },
+                    new Ability { Id = 7, Code = @"secretary", DefaultTitle = @"Γραμματεία" },
+                    new Ability { Id = 8, Code = @"canteen", DefaultTitle = @"Κυλικείο" },
+                    new Ability { Id = 9, Code = @"orientation", DefaultTitle = @"Προσανατολισμός στους χώρους του κτιρίου" }
+                );
+            
+            modelBuilder.Entity<OperationalDifficultyLocalization>()
+                .ToTable("edu_OperationalDifficultyLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<OperationalDifficultyLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.OperationalDifficultyId})
+                .IsUnique();
+            
+            modelBuilder.Entity<DisabilityAid>()
+                .ToTable("edu_DisabilityAids")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<DisabilityAid>()
+                .HasData(
+                    new DisabilityAid { Id = 1, Code = @"HearingAid", DisabilityAidType = DisabilityAidType.Physical, DefaultTitle = @"ακουστικό βαρηκοΐας" },
+                    new DisabilityAid { Id = 2, Code = @"wheelchair", DisabilityAidType = DisabilityAidType.Physical, DefaultTitle = @"αναπηρικό αμαξίδιο" },
+                    new DisabilityAid { Id = 3, Code = @"speechComposer", DisabilityAidType = DisabilityAidType.Digital, DefaultTitle = @"συνθέτη ομιλίας" },
+                    new DisabilityAid { Id = 4, Code = @"virtualKeyboard", DisabilityAidType = DisabilityAidType.Digital, DefaultTitle = @"εικονικό πληκτρολόγιο" },
+                    new DisabilityAid { Id = 5, Code = @"switches", DisabilityAidType = DisabilityAidType.Digital, DefaultTitle = @"διακόπτες" },
+                    new DisabilityAid { Id = 6, Code = @"screenReader", DisabilityAidType = DisabilityAidType.Digital, DefaultTitle = @"αναγνώστη οθόνης" },
+                    new DisabilityAid { Id = 7, Code = @"brailleScreen", DisabilityAidType = DisabilityAidType.Digital, DefaultTitle = @"οθόνη Braille" }
+                );
+            
+            modelBuilder.Entity<DisabilityAidLocalization>()
+                .ToTable("edu_DisabilityAidLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<DisabilityAidLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.DisabilityAidId})
+                .IsUnique();
+            
+            modelBuilder.Entity<LearningDifficulty>()
+                .ToTable("edu_LearningDifficulties")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<LearningDifficulty>()
+                .HasData(
+                    new DisabilityAid { Id = 1, Code = @"teacherSpeech", DefaultTitle = @"Τι λέει ο καθηγητής;" },
+                    new DisabilityAid { Id = 2, Code = @"teacherWriting", DefaultTitle = @"Τι γράφει στον πίνακα;" },
+                    new DisabilityAid { Id = 3, Code = @"teacherScreen", DefaultTitle = @"Τι προβάλει στην οθόνη;" },
+                    new DisabilityAid { Id = 4, Code = @"studentNotes", DefaultTitle = @"Συγγραφή σημειώσεων;" },
+                    new DisabilityAid { Id = 5, Code = @"studentQuestions", DefaultTitle = @"Διατύπωση αποριών;" }
+                );
+            
+            modelBuilder.Entity<LearningDifficultyLocalization>()
+                .ToTable("edu_LearningDifficultyLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<LearningDifficultyLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.LearningDifficultyId})
+                .IsUnique();
+            
+            modelBuilder.Entity<PcInputOutputDevice>()
+                .ToTable("edu_PcInputOutputDevices")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<PcInputOutputDevice>()
+                .HasData(
+                    new PcInputOutputDevice { Id = 1, Code = @"keyboard", DefaultTitle = @"Πληκτρολόγιο" },
+                    new PcInputOutputDevice { Id = 2, Code = @"mouse", DefaultTitle = @"Ποντίκι" },
+                    new PcInputOutputDevice { Id = 3, Code = @"screen", DefaultTitle = @"Οθόνη" },
+                    new PcInputOutputDevice { Id = 4, Code = @"speakers", DefaultTitle = @"Ηχεία" }
+                );
+            
+            modelBuilder.Entity<PcInputOutputDeviceLocalization>()
+                .ToTable("edu_PcInputOutputDeviceLocalizations")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<PcInputOutputDeviceLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.PcInputOutputDeviceId})
+                .IsUnique();
+            
+            modelBuilder.Entity<ExamAid>()
+                .ToTable("edu_ExamAids")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<ExamAid>()
+                .HasData(
+                    new ExamAid { Id = 1, Code = @"oralExams", DefaultTitle = @"προφορικές εξετάσεις" },
+                    new ExamAid { Id = 2, Code = @"differentQuestions", DefaultTitle = @"διαφορετικά θέματα" },
+                    new ExamAid { Id = 3, Code = @"braille", DefaultTitle = @"με χρήση της γραφής Braille" },
+                    new ExamAid { Id = 4, Code = @"computer", DefaultTitle = @"με χρήση Η/Υ" }
+                );
+            
+            modelBuilder.Entity<ExamAidLocalization>()
+                .ToTable("edu_ExamAidLocalization")
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<ExamAidLocalization>()
+                .HasIndex(x => new {x.LanguageId, x.ExamAidid})
+                .IsUnique();
+
+            modelBuilder.Entity<FormSubmission>()
+                .ToTable("log_FormSubmissions")
+                .HasKey(x => x.Id);
         }
     }
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - Graduation.Web</title>
     <link rel="stylesheet" href="~/css/index.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body>
 <header>
@@ -24,6 +23,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Form" asp-action="Index">Submit form</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -46,8 +49,6 @@
 </footer>
 
 <script src="~/js/system.js" asp-append-version="true"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>

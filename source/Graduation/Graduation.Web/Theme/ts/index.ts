@@ -13,6 +13,8 @@ import FormSubmitActionControl from './FormSubmitAction';
 import DataSource from './DataSource';
 import { DataContext } from './DataContext';
 
+require('./custom.ts');
+
 var formId = Guid.NewGuid();
 var submitActionId = Guid.NewGuid(); 
 
@@ -1209,16 +1211,3 @@ var dataSource = context.Get('postalCodes');
 
 console.log(dataSource);
 
-
-(function () {
-
-	$('.form-select.postcode').on('change', function() {
-
-		var option = $(':selected', this);
-
-		$('.form-select.area').val(option.data('area'));
-		$('.form-select.prefecture').val(option.data('prefecture'));
-		
-	});
-	
-})();

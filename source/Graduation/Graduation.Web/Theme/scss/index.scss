@@ -1,5 +1,9 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+@import "master";
+@import "form";
+@import "header";
+@import "footer";
 
 .page.page-form {
     &.step-3 {  

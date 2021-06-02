@@ -2,6 +2,7 @@
 
 using Graduation.Web.Data;
 
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +36,44 @@ namespace Graduation.Core
                 .AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityContext>();
 
-            return services;
+            return services
+                .AddScoped<ILocalizationManager, LocalizationManager>();
+        }
+
+        public static IApplicationBuilder UsePostalCodes(this IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<PostalCodeContext>();
+                
+                context.Database.Migrate();
+            }
+            
+            return app;
+        }
+        
+        public static IApplicationBuilder UseEducation(this IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<EducationContext>();
+                
+                context.Database.Migrate();
+            }
+            
+            return app;
+        }
+
+        public static IApplicationBuilder UseIdentity(this IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+
+                context.Database.Migrate();
+            }
+
+            return app;
         }
 
         public static DbContextOptionsBuilder UseDatabase(this DbContextOptionsBuilder options, IConfiguration configuration)

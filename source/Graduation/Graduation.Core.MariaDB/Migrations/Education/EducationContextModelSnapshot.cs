@@ -16,6 +16,435 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.6");
 
+            modelBuilder.Entity("Graduation.Core.Ability", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_Abilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "vision",
+                            DefaultDescription = "η ικανότητα ενός ατόμου να αναγνωρίζει και να διαβάζει χωρίς τη χρήση τεχνολογίας.",
+                            DefaultTitle = "Όραση"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "hearing",
+                            DefaultDescription = "η ικανότητα του ατόμου να ακούει κάποιο συνομιλητή και να αντιλαμβάνεται ακουστικά σήματα.",
+                            DefaultTitle = "Ακοή"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "speech",
+                            DefaultDescription = "η δυνατότητα του ατόμου να ομιλεί με κάποιο συνομιλητή.",
+                            DefaultTitle = "Ομιλία"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "stretching",
+                            DefaultDescription = "η δυνατότητα του ατόμου να εκτελεί αυτές τις ενέργειες με το επάνω μέρος του σώματος έχοντας ταυτόχρονα καλό έλεγχο της δύναμής του.",
+                            DefaultTitle = "Τέντωμα και Φτάσιμο"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "dexterity",
+                            DefaultDescription = "η ικανότητα του ατόμου να πιάνει κάτι, να κρατάει κάτι, να μεταφέρει, να στριφογυρίζει κάτι και να γράφει.",
+                            DefaultTitle = "Επιδεξιότητα"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "movement",
+                            DefaultDescription = "η ικανότητα ενός ατόμου για βηματισμό, να ανεβαίνει σκάλες, για σκαρφάλωμα, για σκύψιμο και για ισορροπία, χωρίς τη χρήση βοηθημάτων.	",
+                            DefaultTitle = "Μετακίνηση"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "understanding",
+                            DefaultDescription = "η δυνατότητα του ατόμου για κατανόηση του προφορικού και γραπτού λόγου.",
+                            DefaultTitle = "Κατανόηση"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.AbilityLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AbilityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AbilityId");
+
+                    b.HasIndex("LanguageId", "AbilityId")
+                        .IsUnique();
+
+                    b.ToTable("edu_AbilityLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.DisabilityAid", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("DisabilityAidType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_DisabilityAids");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "HearingAid",
+                            DefaultTitle = "ακουστικό βαρηκοΐας",
+                            DisabilityAidType = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "wheelchair",
+                            DefaultTitle = "αναπηρικό αμαξίδιο",
+                            DisabilityAidType = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "speechComposer",
+                            DefaultTitle = "συνθέτη ομιλίας",
+                            DisabilityAidType = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "virtualKeyboard",
+                            DefaultTitle = "εικονικό πληκτρολόγιο",
+                            DisabilityAidType = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "switches",
+                            DefaultTitle = "διακόπτες",
+                            DisabilityAidType = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "screenReader",
+                            DefaultTitle = "αναγνώστη οθόνης",
+                            DisabilityAidType = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "brailleScreen",
+                            DefaultTitle = "οθόνη Braille",
+                            DisabilityAidType = 1
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.DisabilityAidLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("DisabilityAidId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisabilityAidId");
+
+                    b.HasIndex("LanguageId", "DisabilityAidId")
+                        .IsUnique();
+
+                    b.ToTable("edu_DisabilityAidLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.ExamAid", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_ExamAids");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "oralExams",
+                            DefaultTitle = "προφορικές εξετάσεις"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "differentQuestions",
+                            DefaultTitle = "διαφορετικά θέματα"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "braille",
+                            DefaultTitle = "με χρήση της γραφής Braille"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "computer",
+                            DefaultTitle = "με χρήση Η/Υ"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.ExamAidLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ExamAidid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamAidid");
+
+                    b.HasIndex("LanguageId", "ExamAidid")
+                        .IsUnique();
+
+                    b.ToTable("edu_ExamAidLocalization");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.LearningDifficulty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_LearningDifficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "teacherSpeech",
+                            DefaultTitle = "Τι λέει ο καθηγητής;"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "teacherWriting",
+                            DefaultTitle = "Τι γράφει στον πίνακα;"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "teacherScreen",
+                            DefaultTitle = "Τι προβάλει στην οθόνη;"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "studentNotes",
+                            DefaultTitle = "Συγγραφή σημειώσεων;"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "studentQuestions",
+                            DefaultTitle = "Διατύπωση αποριών;"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.LearningDifficultyLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LearningDifficultyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LearningDifficultyId");
+
+                    b.HasIndex("LanguageId", "LearningDifficultyId")
+                        .IsUnique();
+
+                    b.ToTable("edu_LearningDifficultyLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.PcInputOutputDevice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_PcInputOutputDevices");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "keyboard",
+                            DefaultTitle = "Πληκτρολόγιο"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "mouse",
+                            DefaultTitle = "Ποντίκι"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "screen",
+                            DefaultTitle = "Οθόνη"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "speakers",
+                            DefaultTitle = "Ηχεία"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.PcInputOutputDeviceLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PcInputOutputDeviceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PcInputOutputDeviceId");
+
+                    b.HasIndex("LanguageId", "PcInputOutputDeviceId")
+                        .IsUnique();
+
+                    b.ToTable("edu_PcInputOutputDeviceLocalizations");
+                });
+
             modelBuilder.Entity("Graduation.Core.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -386,6 +815,20 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                         });
                 });
 
+            modelBuilder.Entity("Graduation.Core.FormSubmission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Data")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("log_FormSubmissions");
+                });
+
             modelBuilder.Entity("Graduation.Core.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -594,12 +1037,6 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                         },
                         new
                         {
-                            Id = 34,
-                            Code = "ny",
-                            Name = "Chichewa"
-                        },
-                        new
-                        {
                             Id = 35,
                             Code = "zh",
                             Name = "Chinese"
@@ -609,12 +1046,6 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                             Id = 37,
                             Code = "cu",
                             Name = "Church Slavic"
-                        },
-                        new
-                        {
-                            Id = 38,
-                            Code = "cu",
-                            Name = "Church Slavonic"
                         },
                         new
                         {
@@ -1134,12 +1565,6 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                         },
                         new
                         {
-                            Id = 141,
-                            Code = "ny",
-                            Name = "Nyanja"
-                        },
-                        new
-                        {
                             Id = 144,
                             Code = "oc",
                             Name = "Occitan (post 1500)"
@@ -1149,24 +1574,6 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                             Id = 145,
                             Code = "oj",
                             Name = "Ojibwa"
-                        },
-                        new
-                        {
-                            Id = 146,
-                            Code = "cu",
-                            Name = "Old Bulgarian"
-                        },
-                        new
-                        {
-                            Id = 147,
-                            Code = "cu",
-                            Name = "Old Church Slavonic"
-                        },
-                        new
-                        {
-                            Id = 148,
-                            Code = "cu",
-                            Name = "Old Slavonic"
                         },
                         new
                         {
@@ -1548,6 +1955,294 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                         });
                 });
 
+            modelBuilder.Entity("Graduation.Core.LocalizedResource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId", "Key")
+                        .IsUnique();
+
+                    b.ToTable("sys_LocalizedResources");
+                });
+
+            modelBuilder.Entity("Graduation.Core.OperationalDifficulty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultDescription")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultTitle")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_OperationalDifficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "library",
+                            DefaultTitle = "Βιβλιοθήκη"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "wc",
+                            DefaultTitle = "Τουαλέτες"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "elevator",
+                            DefaultTitle = "Ανελκυστήρες"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "classroom",
+                            DefaultTitle = "Αίθουσες Διδασκαλίας"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "amphitheater",
+                            DefaultTitle = "Αμφιθέατρα"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "laboratory",
+                            DefaultTitle = "Εργαστήρια"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "secretary",
+                            DefaultTitle = "Γραμματεία"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "canteen",
+                            DefaultTitle = "Κυλικείο"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "orientation",
+                            DefaultTitle = "Προσανατολισμός στους χώρους του κτιρίου"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.OperationalDifficultyLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OperationalDifficultyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationalDifficultyId");
+
+                    b.HasIndex("LanguageId", "OperationalDifficultyId")
+                        .IsUnique();
+
+                    b.ToTable("edu_OperationalDifficultyLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.QualificationType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DefaultName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("edu_QualificationTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DefaultName = "Πανελλήνιες Εξετάσεις"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DefaultName = "Με τον ειδικό νόμο (3%) για ΑμεΑ"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DefaultName = "Ομογενείς"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DefaultName = "Μετεγγραφή"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DefaultName = "Ειδικές Εξετάσεις"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.QualificationTypeLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("QualificationTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QualificationTypeId");
+
+                    b.HasIndex("LanguageId", "QualificationTypeId")
+                        .IsUnique();
+
+                    b.ToTable("edu_QualificationTypeLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.AbilityLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Ability", "Ability")
+                        .WithMany("AbilityLocalizations")
+                        .HasForeignKey("AbilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ability");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.DisabilityAidLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Data.DisabilityAid", "DisabilityAid")
+                        .WithMany("DisabilityAidLocalizations")
+                        .HasForeignKey("DisabilityAidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DisabilityAid");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.ExamAidLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Data.ExamAid", "ExamAid")
+                        .WithMany("ExamAidLocalizations")
+                        .HasForeignKey("ExamAidid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ExamAid");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.LearningDifficultyLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Data.LearningDifficulty", "LearningDifficulty")
+                        .WithMany("LearningDifficultyLocalizations")
+                        .HasForeignKey("LearningDifficultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("LearningDifficulty");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.PcInputOutputDeviceLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Data.PcInputOutputDevice", "PcInputOutputDevice")
+                        .WithMany("PcInputOutputDeviceLocalizations")
+                        .HasForeignKey("PcInputOutputDeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("PcInputOutputDevice");
+                });
+
             modelBuilder.Entity("Graduation.Core.DepartmentLocalization", b =>
                 {
                     b.HasOne("Graduation.Core.Department", "Department")
@@ -1567,9 +2262,93 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                     b.Navigation("Language");
                 });
 
+            modelBuilder.Entity("Graduation.Core.LocalizedResource", b =>
+                {
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Graduation.Core.OperationalDifficultyLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.OperationalDifficulty", "OperationalDifficulty")
+                        .WithMany("OperationalDifficultyLocalizations")
+                        .HasForeignKey("OperationalDifficultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("OperationalDifficulty");
+                });
+
+            modelBuilder.Entity("Graduation.Core.QualificationTypeLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.QualificationType", "QualificationType")
+                        .WithMany("QualificationTypeLocalizations")
+                        .HasForeignKey("QualificationTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("QualificationType");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Ability", b =>
+                {
+                    b.Navigation("AbilityLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.DisabilityAid", b =>
+                {
+                    b.Navigation("DisabilityAidLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.ExamAid", b =>
+                {
+                    b.Navigation("ExamAidLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.LearningDifficulty", b =>
+                {
+                    b.Navigation("LearningDifficultyLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Data.PcInputOutputDevice", b =>
+                {
+                    b.Navigation("PcInputOutputDeviceLocalizations");
+                });
+
             modelBuilder.Entity("Graduation.Core.Department", b =>
                 {
                     b.Navigation("DepartmentLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.OperationalDifficulty", b =>
+                {
+                    b.Navigation("OperationalDifficultyLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.QualificationType", b =>
+                {
+                    b.Navigation("QualificationTypeLocalizations");
                 });
 #pragma warning restore 612, 618
         }

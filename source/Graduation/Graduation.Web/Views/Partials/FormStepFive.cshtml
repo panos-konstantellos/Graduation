@@ -1,0 +1,137 @@
+@using Graduation.Web.Controllers
+@model Graduation.Web.Models.FormStepFiveModel
+
+<form  class="needs-validation" action="#" novalidate>
+    <div class="row">
+
+        <div class="col-12">
+                        
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2>Λειτουργικά Εμπόδια/Δυσκολίες</h2>
+                    <div class="border p-2 my-3">
+                        <span class="">Χρησιμοποιείτε κάποιο βοήθημα;</span>
+                        <table class="table table-bordered table-hover my-3">
+                            <tbody>
+
+                            @foreach (var item in this.Model.ExamAidModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <span id="@item.Code.ToCamelCase()-at"><strong>@item.Title</strong></span>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                                   aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-at">
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                                
+                                <tr>
+                                    <td>
+                                        <span id="aid-other-at"><strong>Άλλο</strong></span>
+                                    </td>
+                                    <td>
+                                        @* <div class="form-check form-switch"> *@
+                                        @*     <input class="form-check-input" type="checkbox" value="" id="aid-other-checkbox" *@
+                                        @*         aria-label="Άλλο" aria-describedby="aid-other-at"> *@
+                                        @* </div> *@
+                                        
+                                        <div class="input-group my-3">
+                                            <span class="input-group-text" id="aid-other-at">Άλλο (γράψτε)</span>
+                                            <textarea class="form-control" rows="3" placeholder="Άλλο (γράψτε)" aria-label="Άλλο (γράψτε)" id="ExamsAidOtherText"
+                                                aria-describedby="aid-other-at"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="my-3">
+
+                        <div>
+                            <span>Ποιος είναι ο αριθμός των μαθημάτων που έχετε περάσει μέχρι τώρα;</span>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="passed-courses-at">Αριθμός Μαθημάτων</span>
+                            <input type="number" class="form-control" placeholder="Αριθμός Μαθημάτων" aria-label="Αριθμός Μαθημάτων" id="PassedCourses"
+                                aria-describedby="passed-courses-at" required pattern="[0-9]{2}">
+                            <div class="invalid-feedback">Συμπληρώστε τον αριθμό μαθημάτων.</div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="my-3">
+
+                        <div>
+                            <span>Πόσα μαθήματα πρέπει να περάσετε (συνολικά) στο Τμήμα σας για να πάρετε πτυχίο;</span>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="courses-at">Αριθμός Μαθημάτων</span>
+                            <input type="number" class="form-control" placeholder="Αριθμός Μαθημάτων" aria-label="Αριθμός Μαθημάτων" id="Courses"
+                                aria-describedby="courses-at" required pattern="[0-9]{2}">
+                            <div class="invalid-feedback">Συμπληρώστε τον αριθμό μαθημάτων.</div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="my-3">
+
+                        <div>
+                            <span>Πότε δώσατε το τελευταίο σας μάθημα;</span>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="last-exam-year-at">Έτος</span>
+                            <input type="number" class="form-control" placeholder="Έτος" aria-label="Έτος" id="LastExamParticipationYear"
+                                aria-describedby="last-exam-year-at" required pattern="20[0-9]{2}">
+                            <div class="invalid-feedback">Συμπληρώστε το έτος.</div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="my-3">
+
+                        <div>
+                            <span id="participation-at">Θεωρείτε τη συμμετοχή σας στην εκπαιδευτική διαδικασία;</span>
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <select class="form-select" aria-label="Όραση" id="ParticipationDifficulty"
+                                aria-describedby="participation-at" required>
+                                <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                                <option value="0">Πολύ δύσκολη</option>
+                                <option value="1">Δύσκολη</option>
+                                <option value="2">Μέτρια</option>
+                                <option value="3">Καλή</option>
+                                <option value="4">Πολύ Καλή</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="my-3">
+
+                        <div>
+                            <span id="suggestions-at">Έχετε άλλες παρατηρήσεις – προτάσεις για οποιοδήποτε τομέα (μαθήματα, πρόσβαση κλπ);</span>
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="suggestions-at">Προτάσεις (γράψτε)</span>
+                            <textarea class="form-control" rows="3" placeholder="Προτάσεις (γράψτε)" aria-label="Προτάσεις (γράψτε)" id="Suggestions"
+                                aria-describedby="suggestions-at"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Επόμενο Βήμα</button>
+</form>
