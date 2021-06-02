@@ -21,21 +21,24 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Form" asp-action="Index">Submit form</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                @* <form class="d-flex"> *@
+                @*     <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search"> *@
+                @*     <button class="btn btn-outline-success" type="submit">Search</button> *@
+                @* </form> *@
                 
-                <partial name="_LoginPartial"/>
+                <div class="navbar-collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial"/>
+                </div>
+                
             </div>
+            
+
+            
         </div>
     </nav>
 </header>
@@ -48,6 +51,7 @@
     </div>
 </footer>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="~/js/system.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)

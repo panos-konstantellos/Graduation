@@ -1,7 +1,35 @@
 @using Graduation.Web.Controllers
 @model Graduation.Web.Models.FormStepFiveModel
 
-<form  class="needs-validation" action="#" novalidate>
+<script>
+
+    window.Form = (function(form) {
+        'use strict'
+    
+        form.submitWithUi = function () {
+            
+            window.Form.submit().then(function () 
+            {
+                let form = document.querySelector("form.needs-validation");
+                let wrapper = form.parentNode;
+                
+                wrapper.removeChild(form);
+                
+                var newChild = document.createElement('span');
+                
+                newChild.textContent = 'Form submited successfully';
+                
+                wrapper.appendChild(newChild);
+            });
+            
+        };
+        
+        return form;
+        
+    })(window.Form || {});
+</script>
+
+<form class="needs-validation" onsubmit="window.Form.submitWithUi(); return false;" novalidate>
     <div class="row">
 
         <div class="col-12">

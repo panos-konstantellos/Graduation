@@ -118,6 +118,11 @@ class FormStore
         
         window.sessionStorage.setItem(FormStore.key, _form);
     }
+    
+    public Reset(): void
+    {
+        window.sessionStorage.removeItem(FormStore.key);
+    }
 }
 
 (function () {
@@ -457,6 +462,8 @@ class FormStore
                 },
                 success: function (data) 
                 {
+                    store.Reset();
+                    
                     resolve(data)
                 },
                 error: function (error) 
