@@ -1,4 +1,5 @@
 name: Publish
+
 on:
   release:
     types: [published]
@@ -34,7 +35,7 @@ jobs:
           tag=$(git describe --tags --abbrev=0)
           release_name="App-$tag-${{ matrix.target }}"
 
-          dotnet publish source/Graduation/Graduation.Web/Graduation.Web.csproj -c Release -r ${{ matrix.target }} -o ${{release_name}} --no-build --verbosity normal --self-contained true
+          dotnet publish source/Graduation/Graduation.Web/Graduation.Web.csproj -c Release -r "${{ matrix.target }}" -o "$release_name" --no-build --verbosity normal --self-contained true
 
           if [ "${{ matrix.target }}" == "win-x64" ]; then
             7z a -tzip "${release_name}.zip" "./${release_name}/*"
