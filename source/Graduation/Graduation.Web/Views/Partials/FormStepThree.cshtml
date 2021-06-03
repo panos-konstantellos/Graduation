@@ -1,0 +1,58 @@
+@using Graduation.Web.Controllers
+@model Graduation.Web.Models.FormStepThreeModel
+
+<form class="needs-validation" action="@Url.Action("Index", "Form", new { step = 4 })" novalidate>
+    <div class="row">
+
+        <div class="col-12">
+                        
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2>Βαθμός Ικανοτήτων</h2>
+                    <table class="table table-bordered table-hover my-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Λειτουργία</th>
+                                <th scope="col">Ικανότητα</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                        @foreach (var ability in this.Model.AbilityModels)
+                        {
+                            <tr>
+                                <td>
+                                    <span id="@ability.Code.ToCamelCase()-at"><strong>@ability.Title</strong>: @ability.Description</span>
+                                </td>
+                                <td>
+                                    <select id="@ability.Code.ToCamelCase()" class="form-select" aria-label="@ability.Title"
+                                            aria-describedby="@ability.Code.ToCamelCase()-at" required>
+                                        <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                                        <option value="0">Μηδενική</option>
+                                        <option value="1">Χαμηλή</option>
+                                        <option value="2">Μέτρια</option>
+                                        <option value="3">Ικανοποιητική</option>
+                                        <option value="4">Άριστη</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+
+                    <div class="input-group my-3">
+                        <span class="w-100" id="disability-year-at">Πότε εμφανίστηκε η απώλεια ικανοτήτων σας;</span>
+                        <span class="input-group-text">Έτος</span>
+                        <input id="DisabilityAppearanceYear" type="number" class="form-control" placeholder="Έτος" aria-label="Έτος"
+                            aria-describedby="disability-year-at" required pattern="2[0-8]{1}[0-9]{8}">
+                        <div class="invalid-feedback">Συμπληρώστε τον έτος εμφάνισης της απώλειας.</div>
+                    </div>
+                    
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Επόμενο Βήμα</button>
+</form>

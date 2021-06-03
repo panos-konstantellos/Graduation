@@ -1,0 +1,53 @@
+@using Graduation.Web.Models
+@model Graduation.Web.Models.FormStepModel
+@{
+    ViewData["Title"] = $"Βήμα {this.Model.Step}";
+}
+
+<script>
+
+window.Form = (function(form) {
+    'use strict'
+
+    form.baseUrl = '@this.Model.Baseurl';
+    
+    return form;
+    
+})(window.Form || {});
+
+</script>
+
+<div class="page page-form step-1 container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-lg-10">
+            <h1>@ViewData["Title"]</h1>
+            
+            @{
+                if (this.Model is FormStepOneModel)
+                {
+                    @Html.Partial("~/Views/Partials/FormStepOne.cshtml", this.Model as FormStepOneModel);                    
+                }
+                
+                if (this.Model is FormStepTwoModel)
+                {
+                    @Html.Partial("~/Views/Partials/FormStepTwo.cshtml", this.Model as FormStepTwoModel);                    
+                }
+                
+                if (this.Model is FormStepThreeModel)
+                {
+                    @Html.Partial("~/Views/Partials/FormStepThree.cshtml", this.Model as FormStepThreeModel);                    
+                }
+                
+                if (this.Model is FormStepFourModel)
+                {
+                    @Html.Partial("~/Views/Partials/FormStepFour.cshtml", this.Model as FormStepFourModel);                    
+                }
+                
+                if (this.Model is FormStepFiveModel)
+                {
+                    @Html.Partial("~/Views/Partials/FormStepFive.cshtml", this.Model as FormStepFiveModel);                    
+                }
+            }
+        </div>
+    </div>
+</div>

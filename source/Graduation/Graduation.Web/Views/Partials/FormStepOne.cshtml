@@ -1,0 +1,154 @@
+@model Graduation.Web.Models.FormStepOneModel
+
+<form id="form-step-one" class="needs-validation" action="@Url.Action("Index", "Form", new { step = 2 })" novalidate>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+                    
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2>@this.Model.Literals["Form.StepOne.Title"]</h2>
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="name-at">Όνομα</span>
+                        <input id="name" type="text" class="form-control" placeholder="Όνομα" aria-label="Όνομα"
+                               aria-describedby="name-at" required>
+                        <div class="invalid-feedback">Συμπληρώστε το όνομα σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="surname-at">Επώνυμο</span>
+                        <input id="surname" type="text" class="form-control" placeholder="Επώνυμο" aria-label="Επώνυμο"
+                               aria-describedby="surname-at" required>
+                        <div class="invalid-feedback">Συμπληρώστε το επώνυμο σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="fathersname-at">Πατρώνυμο</span>
+                        <input id="fathersname" type="text" class="form-control" placeholder="Πατρώνυμο" aria-label="Πατρώνυμο"
+                               aria-describedby="fathersname-at" required>
+                        <div class="invalid-feedback">Συμπληρώστε το πατρώνυμο σας.</div>
+                    </div>
+                            
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="gender-at">Φύλο</span>
+                        <select id="gender" class="form-select" aria-label="Φύλο"
+                                aria-describedby="gender-at" required>
+                            <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                            <option value="male">Άρρεν</option>
+                            <option value="female">Θήλυ</option>
+                        </select>
+                        <div class="invalid-feedback">Συμπληρώστε το φύλο σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="department-at">Τμήμα</span>
+                        <select id="department" class="form-select" aria-label="Τμήμα"
+                                aria-describedby="department-at" required>
+                            <option selected disabled value="">Παρακαλώ επίλεξε</option>
+                            
+                            @foreach (var department in Model.Departments)
+                            {
+                                <option value="@department.Code">@department.Name</option>
+                            }
+                        </select>
+                        <div class="invalid-feedback">Συμπληρώστε το τμήμα σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="studentid-at">Αριθμός μητρώου</span>
+                        <input id="studentid" type="text" class="form-control" placeholder="Αριθμός μητρώου" aria-label="Αριθμός μητρώου"
+                               aria-describedby="studentid-at" required pattern="cs[0-9]{6}">
+                        <div class="invalid-feedback">Συμπληρώστε τον αριθμό μητρώου σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="disability-at">Αναπηρία</span>
+                        <textarea id="disability" class="form-control" rows="3" placeholder="Αναπηρία" aria-label="Αναπηρία"
+                            aria-describedby="disability-at" required></textarea>
+                        <div class="invalid-feedback">Συμπληρώστε την αναπηρία σας.</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="col-12 col-lg-6">
+                        
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2>Στοιχεία Επικοινωνίας</h2>
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="phone-at">Τηλέφωνο (οικίας)</span>
+                        <input id="phone" type="tel" class="form-control" placeholder="Τηλέφωνο (οικίας)" aria-label="Τηλέφωνο (οικίας)"
+                               aria-describedby="phone-at" required pattern="2[0-8]{1}[0-9]{8}">
+                        <div class="invalid-feedback">Συμπληρώστε το τηλέφωνο σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="mobile-at">Τηλέφωνο (κινητό)</span>
+                        <input id="mobile" type="tel" class="form-control" placeholder="Τηλέφωνο (κινητό)" aria-label="Τηλέφωνο (κινητό)"
+                               aria-describedby="mobile-at" required pattern="6[8-9]{1}[0-9]{8}">
+                        <div class="invalid-feedback">Συμπληρώστε το τηλέφωνο σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="email-at">Email</span>
+                        <input id="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
+                               aria-describedby="email-at" required>
+                        <div class="invalid-feedback">Συμπληρώστε το email σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="address-at">Διεύθυνση</span>
+                        <input id="address" type="text" class="form-control" placeholder="Διεύθυνση" aria-label="Διεύθυνση"
+                               aria-describedby="address-at" required>
+                        <div class="invalid-feedback">Συμπληρώστε την διεύθυνση σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="postalcode-at">T.K.</span>
+                        
+                        <select id="postalcode" class="form-select postalcode" aria-label="Πόλη"
+                                aria-describedby="postalcode-at" required>
+                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                            @foreach (var postalcode in Model.PostalCodes)
+                            {
+                                <option data-area="@postalcode.Area" data-prefecture="@postalcode.Prefecture" value="@postalcode.Code">@postalcode.Code</option>
+                            }
+                        </select>
+                        <div class="invalid-feedback">Συμπληρώστε τον Τ.Κ. σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="city-at">Πόλη</span>
+                        <select id="city" class="form-select area" aria-label="Πόλη"
+                                aria-describedby="city-at" disabled required>
+                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                            @foreach (var postalcode in Model.PostalCodes)
+                            {
+                                <option value="@postalcode.Area">@postalcode.Area</option>
+                            }
+                        </select>
+                        <div class="invalid-feedback">Συμπληρώστε το T.K. σας.</div>
+                    </div>
+                    
+                    <div class="input-group my-1">
+                        <span class="input-group-text" id="region-at">Περιφέρεια</span>
+                        <select id="region" class="form-select prefecture" aria-label="Περιφέρεια"
+                                aria-describedby="region-at" disabled required>
+                            <option selected disabled value="">Παρακαλώ επίλεξε T.K</option>
+                            @foreach (var postalcode in Model.PostalCodes)
+                            {
+                                <option value="@postalcode.Prefecture">@postalcode.Prefecture</option>
+                            }
+                        </select>
+                        <div class="invalid-feedback">Συμπληρώστε το T.K. σας.</div>
+                    </div>
+                    
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Επόμενο Βήμα</button>
+</form>

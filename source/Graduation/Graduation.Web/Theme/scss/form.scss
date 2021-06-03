@@ -1,0 +1,11 @@
+form.needs-validation {
+  .invalid-feedback {
+    display: block; height: 20px; padding: 0; margin: 0; font-size: 14px; line-height: 25px; overflow: hidden; opacity: 0;
+  }
+  
+  .is-invalid ~ .invalid-feedback { opacity: 1; }
+  
+  &.was-validated {
+    :invalid ~ .invalid-feedback{ opacity: 1 }
+  }
+}

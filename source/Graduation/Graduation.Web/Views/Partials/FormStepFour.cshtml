@@ -1,0 +1,296 @@
+@using Graduation.Web.Controllers
+@model Graduation.Web.Models.FormStepFourModel
+
+<form class="needs-validation" action="@Url.Action("Index", "Form", new { step = 5 })" novalidate>
+    <div class="row">
+
+        <div class="col-12">
+                        
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2>Λειτουργικά Εμπόδια/Δυσκολίες</h2>
+                    <table class="table table-bordered table-hover my-3">
+                        <tbody>
+                        @foreach (var item in this.Model.OperationalDifficultyModels)
+                        {
+                            <tr>
+                                <td>
+                                    <span id="@item.Code.ToCamelCase()-at"><strong>@item.Title</strong></span>
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                               aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-at">
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                    
+                    <div class="border p-2 my-3">
+                        <span class="">Χρησιμοποιείτε κάποιο βοήθημα;</span>
+                        <table class="table table-bordered table-hover my-3">
+                            <tbody>
+
+                            @foreach (var item in this.Model.PhysicalDisabilityAidModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <span id="@item.Code.ToCamelCase()-aid-at"><strong>@item.Title</strong></span>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                                   aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-aid-at">
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                                    
+                            <tr>
+                                <td>
+                                    <span id="aid-other-at"><strong>Άλλο</strong></span>
+                                </td>
+                                <td>
+                                    @* <div class="form-check form-switch"> *@
+                                    @*     <input class="form-check-input" type="checkbox" value="" id="aid-other-checkbox" *@
+                                    @*            aria-label="Άλλο" aria-describedby="aid-other-at"> *@
+                                    @* </div> *@
+                                            
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="aid-other-at">Άλλο (γράψτε)</span>
+                                        <textarea class="form-control" rows="3" placeholder="Άλλο (γράψτε)" aria-label="Άλλο (γράψτε)" id="PhsyicalAidOtherText"
+                                                    aria-describedby="aid-other-at" ></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <div>
+                            <span>Έχετε κάποια δυσκολία στο να διαβάζετε και να χειρίζεστε (π.χ., να ξεφυλλίζετε) βιβλία, σημειώσεις και άλλο εκπαιδευτικό υλικό;</span>
+                        </div>
+                        
+                        <div class="input-group my-3">
+
+                            <span class="input-group-text" id="help-at">βοήθημα</span>
+                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-true" autocomplete="off"
+                                aria-label="NAI" aria-describedby="help-at">
+                            <label class="btn btn-secondary" for="HelpOptions-true">ΝΑΙ</label>
+
+                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-false" autocomplete="off"
+                                aria-label="ΟΧΙ" aria-describedby="help-at">
+                            <label class="btn btn-secondary" for="HelpOptions-false">ΟΧΙ</label>
+
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="help-other-at">Αν ναι, ποιο;</span>
+                            <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="HelpOptionsText"
+                                aria-describedby="help-other-at" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <span class="">Σε ποιες από τις παρακάτω περιπτώσεις αντιμετωπίζετε πρόβλημα κατά τη διάρκεια του μαθήματος;</span>
+                        <table class="table table-bordered table-hover my-3">
+                            <tbody>
+                            @foreach (var item in this.Model.LearningDifficultyModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <span id="@item.Code.ToCamelCase()-at"><strong>@item.Title</strong></span>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                                   aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-at">
+                                        </div>
+
+                                        <div class="input-group my-3">
+                                            <span class="input-group-text" id="@item.Code.ToCamelCase()Text-at">Γιατί;</span>
+                                            <textarea class="form-control" rows="3" placeholder="Γιατί;" aria-label="Γιατί;" id="@item.Code.ToCamelCase()Text"
+                                                aria-describedby="@item.Code.ToCamelCase()Text-at"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td>
+                                    <span id="other-problem-at"><strong>Άλλο πρόβλημα;</strong></span>
+                                </td>
+                                <td>
+                                    @* <div class="form-check form-switch"> *@
+                                    @*     <input class="form-check-input" type="checkbox" value="" id="other-problem-checkbox" *@
+                                    @*         aria-label="Σκάλες" aria-describedby="other-problem-at"> *@
+                                    @* </div> *@
+
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="LearningDifficultyOtherText-at">Περιγράψτε</span>
+                                        <textarea class="form-control" rows="3" placeholder="Περιγράψτε" aria-label="Περιγράψτε" id="LearningDifficultyOtherText"
+                                                aria-describedby="LearningDifficultyOtherText-at"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <div>
+                            <span>Μπορείτε να διεκπεραιώσετε τις εργασίες που σας αναθέτουν οι καθηγητές σας;</span>
+                        </div>
+                        <div class="input-group my-3">
+
+                            <span class="input-group-text" id="study-process-at">διεκπαιραίωση εργασιών</span>
+                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-true" autocomplete="off"
+                                aria-label="NAI" aria-describedby="study-process-at">
+                            <label class="btn btn-secondary" for="StudyProcess-true">ΝΑΙ</label>
+
+                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-false" autocomplete="off"
+                                aria-label="ΟΧΙ" aria-describedby="study-process-at">
+                            <label class="btn btn-secondary" for="StudyProcess-false">ΟΧΙ</label>
+
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="study-process-other-at">Αν ναι, ποιο;</span>
+                            <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="StudyProcessText"
+                                aria-describedby="study-process-other-at" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <div>
+                            <span>Αντιμετωπίζετε κάποιο πρόβλημα κατά τη διεξαγωγή των εργαστηριακών ή κλινικών ασκήσεων;</span>
+                        </div>
+                        <div class="input-group my-3">
+
+                            <span class="input-group-text" id="LabParticipation-at">διεξαγωγή εργαστηριακών εργασιών</span>
+                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-true" autocomplete="off"
+                                aria-label="NAI" aria-describedby="LabParticipation-at">
+                            <label class="btn btn-secondary" for="LabParticipation-true">ΝΑΙ</label>
+
+                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-false" autocomplete="off"
+                                aria-label="ΟΧΙ" aria-describedby="LabParticipation-at">
+                            <label class="btn btn-secondary" for="LabParticipation-false">ΟΧΙ</label>
+
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="LabParticipation-other-at">Αν ναι, ποιο;</span>
+                            <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="LabParticipationText"
+                                aria-describedby="LabParticipation-other-at" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <div>
+                            <span>Είστε χρήστης ηλεκτρονικού υπολογιστή;</span>
+                        </div>
+                        <div class="input-group my-3">
+
+                            <span class="input-group-text" id="PcUsage-at">Χρήση Η/Υ</span>
+                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-true" autocomplete="off"
+                                aria-label="NAI" aria-describedby="PcUsage-at">
+                            <label class="btn btn-secondary" for="PcUsage-true">ΝΑΙ</label>
+
+                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-false" autocomplete="off"
+                                aria-label="ΟΧΙ" aria-describedby="PcUsage-at">
+                            <label class="btn btn-secondary" for="PcUsage-false">ΟΧΙ</label>
+
+                        </div>
+                        
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="PcUsage-other-at">Αν όχι, γιατί;</span>
+                            <textarea class="form-control" rows="3" placeholder="Γιατί (γράψτε)" aria-label="Γιατί; (γράψτε)" id="PcUsageText"
+                                aria-describedby="PcUsage-other-at" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="border p-2 my-3">
+                        <span class="">Δυσκολεύεστε ή αδυνατείτε να χρησιμοποιήσετε κάποια από τα παρακάτω μέρη του υπολογιστή;</span>
+                        <table class="table table-bordered table-hover my-3">
+                            <tbody>
+
+                            @foreach (var item in this.Model.PcInputOutputDeviceModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <span id="@item.Code.ToCamelCase()-at"><strong>@item.Title</strong></span>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                                   aria-label="Σκάλες" aria-describedby="@item.Code.ToCamelCase()-at">
+                                        </div>
+                                        
+                                        <div class="input-group my-3">
+                                            <span class="input-group-text" id="@item.Code.ToCamelCase()-other-at">Γιατί;</span>
+                                            <textarea class="form-control" rows="3" placeholder="Γιατί;" aria-label="Γιατί;" id="@item.Code.ToCamelCase()Text"
+                                                aria-describedby="@item.Code.ToCamelCase()-other-at"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="border p-2 my-3">
+                        <span class=""> Χρησιμοποιείτε κάποιο βοηθητικό λογισμικό ή βοηθητικές συσκευές Η/Υ;</span>
+                        <table class="table table-bordered table-hover my-3">
+                            <tbody>
+                            
+                            @foreach (var item in this.Model.DigitalDisabilityAidModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <span id="@item.Code.ToCamelCase()-at"><strong>@item.Title</strong></span>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                                   aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-at">
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td>
+                                    <span id="pc-accesibility-tool-at"><strong>Άλλο</strong></span>
+                                </td>
+                                <td>
+                                    @* <div class="form-check form-switch"> *@
+                                    @*     <input class="form-check-input" type="checkbox" value="" id="pc-accesibility-tool-checkbox" *@
+                                    @*            aria-label="Άλλο" aria-describedby="pc-accesibility-tool-at"> *@
+                                    @* </div> *@
+
+                                    <div class="input-group my-3">
+                                        <span class="input-group-text" id="pc-accesibility-tool-at">Άλλο (γράψτε)</span>
+                                        <textarea class="form-control" rows="3" placeholder="Άλλο (γράψτε)" aria-label="Άλλο (γράψτε)" id="DigitalAidOtherText"
+                                                aria-describedby="pc-accesibility-tool-at"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Επόμενο Βήμα</button>
+</form>
