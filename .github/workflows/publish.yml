@@ -36,7 +36,7 @@ jobs:
           release_name="Graduation-$tag-${{ matrix.target }}"
 
           # Build everything
-          dotnet publish source/Graduation/Graduation.Web/Graduation.Web.csproj --runtime "${{ matrix.target }}" -c Release /p:DebugType=None -o "$release_name" -p:PublishSingleFile=true --self-contained true
+          dotnet publish source/Graduation/Graduation.Web/Graduation.Web.csproj --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=true --self-contained true
 
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
