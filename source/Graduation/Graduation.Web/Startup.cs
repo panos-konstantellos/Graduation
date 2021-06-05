@@ -33,9 +33,9 @@ namespace Graduation.Web
             {
                 x.Filters.Add(new ApiExceptionFilter());
             });
-            
+
             services
-                .Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders =ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto)
+                .Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto)
                 .AddRazorPages();
         }
 
