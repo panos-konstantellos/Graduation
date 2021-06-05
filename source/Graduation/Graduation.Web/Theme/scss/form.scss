@@ -1,3 +1,30 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@mixin button-selected-variant(
+  $background,
+  $border,
+  $color: color-contrast($background),
+  $hover-background: if($color == $color-contrast-light, shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)),
+  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)),
+  $hover-color: color-contrast($hover-background),
+  $active-background: if($color == $color-contrast-light, shade-color($background,$btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)),
+  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)),
+  $active-color: color-contrast($active-background),
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background)
+) {
+
+  @include gradient-bg($hover-background);
+  border-color: $hover-border;
+  @if $enable-shadows {
+    @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+  } @else {
+    // Avoid using mixin so we can pass custom focus shadow properly
+    box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
+  }
+  
+}
+
 form.needs-validation {
   .invalid-feedback {
     display: block; height: 20px; padding: 0; margin: 0; font-size: 14px; line-height: 25px; overflow: hidden; opacity: 0;
@@ -8,4 +35,19 @@ form.needs-validation {
   &.was-validated {
     :invalid ~ .invalid-feedback{ opacity: 1 }
   }
+
+  input[type="radio"]:checked + label,
+  input[type="radio"] + label:hover {
+
+    @each $color, $value in $theme-colors {
+      &.btn-#{$color} {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+        
+        @include button-selected-variant($value, $value);
+        
+      }
+    }
+  }
+
 }
