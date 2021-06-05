@@ -44,7 +44,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepOneModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}/",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     PostalCodes = (await this._postalCodeProviderService.GetPostalCodesAsync(cancellationToken))?.OrderBy(x => x.Code).ToList() ?? new List<PostalCode>(),
                     Departments = departments
                         .Where(x => x.DepartmentLocalizations.Any())
@@ -71,7 +71,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepTwoModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}/",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     QualificationTypes = qualificationTypes
                         .Select(x => new QualificationTypeModel
                         {
@@ -90,7 +90,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepThreeModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}/",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     AbilityModels = abilities
                         .Select(x => new AbilityModel
                         {
@@ -123,7 +123,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFourModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}/",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     OperationalDifficultyModels = operationalDifficulties
                         .Select(x => new OperationalDifficultyModel
                         {
@@ -178,7 +178,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFiveModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}/",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     ExamAidModels = examAids
                         .Select(x => new ExamAidModel
                         {
