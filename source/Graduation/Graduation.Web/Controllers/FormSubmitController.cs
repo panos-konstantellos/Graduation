@@ -1,8 +1,9 @@
 using System;
 using System.Data;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
+using FluentValidation;
 
 using Graduation.Core;
 using Graduation.Web.Models;
@@ -14,8 +15,7 @@ using Newtonsoft.Json;
 
 namespace Graduation.Web.Controllers
 {
-    [ApiController]
-    public class FormSubmitController
+    public class FormSubmitController : ApiController
     {
         private readonly EducationContext _context;
         private readonly IPostalCodeProviderService _postalCodeProviderService;
@@ -28,7 +28,7 @@ namespace Graduation.Web.Controllers
         
         [Route("Form")]
         [HttpPost]
-        public async Task<bool> Submit([FromBody]FormSubmitRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> Submit([FromBody]FormSubmitRequest request, CancellationToken cancellationToken)
         {
             var clone = JsonConvert.DeserializeObject<FormSubmitRequest>(JsonConvert.SerializeObject(request));
 
@@ -37,17 +37,17 @@ namespace Graduation.Web.Controllers
                 throw new ArgumentNullException(nameof(clone));
             }
 
-            QualificationType qualificationType;  
+            // QualificationType qualificationType;  
             if (clone.QualificationType != "other")
             {
                 clone.QualificationTypeText = string.Empty;
             }
-            else
-            {
-                qualificationType = await this._context.QualificationTypes.FirstOrDefaultAsync(x =>
-                    x.QualificationTypeLocalizations.Any(l => l.Name == clone.QualificationType) ||
-                    x.DefaultName == clone.QualificationType);
-            }
+            // else
+            // {
+            //     qualificationType = await this._context.QualificationTypes.FirstOrDefaultAsync(x =>
+            //         x.QualificationTypeLocalizations.Any(l => l.Name == clone.QualificationType) ||
+            //         x.DefaultName == clone.QualificationType);
+            // }
 
             if (clone.TeacherSpeech == false)
             {
@@ -109,6 +109,13 @@ namespace Graduation.Web.Controllers
                 clone.SpeakersText = string.Empty;
             }
 
+            var validationResult = await new FormSubmitRequestValidator().ValidateAsync(clone, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+            
             this._context.FormSubmissions.Add(new FormSubmission
             {
                 Data = JsonConvert.SerializeObject(clone)
@@ -121,7 +128,7 @@ namespace Graduation.Web.Controllers
                 await transaction.CommitAsync(cancellationToken);
             }
             
-            return true;
+            return this.Ok(true);
         }
     }
 }

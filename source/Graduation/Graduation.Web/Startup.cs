@@ -1,11 +1,10 @@
-using Graduation.Core;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Graduation.Core;
 
 namespace Graduation.Web
 {
@@ -27,6 +26,10 @@ namespace Graduation.Web
                 .AddIdentity(this._configuration);
             
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddControllers(x =>
+            {
+                x.Filters.Add(new ApiExceptionFilter());
+            });
 
             services.AddRazorPages();
         }
@@ -58,12 +61,13 @@ namespace Graduation.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=home}/{action=Index}");
+                
                 endpoints.MapRazorPages();
             });
         }

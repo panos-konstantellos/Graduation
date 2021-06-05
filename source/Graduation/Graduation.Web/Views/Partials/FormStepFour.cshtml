@@ -79,17 +79,17 @@
                         <div class="input-group my-3">
 
                             <span class="input-group-text" id="help-at">βοήθημα</span>
-                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-true" autocomplete="off"
+                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-true" autocomplete="off" data-form-select-other-textby="HelpOptionsText"
                                 aria-label="NAI" aria-describedby="help-at">
                             <label class="btn btn-success" for="HelpOptions-true">ΝΑΙ</label>
 
-                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-false" autocomplete="off"
+                            <input type="radio" class="btn-check" name="HelpOptions" id="HelpOptions-false" autocomplete="off" data-form-select-other-textby="HelpOptionsText"
                                 aria-label="ΟΧΙ" aria-describedby="help-at">
                             <label class="btn btn-danger" for="HelpOptions-false">ΟΧΙ</label>
 
                         </div>
                         
-                        <div class="input-group my-3">
+                        <div class="input-group my-3 d-none">
                             <span class="input-group-text" id="help-other-at">Αν ναι, ποιο;</span>
                             <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="HelpOptionsText"
                                 aria-describedby="help-other-at" required></textarea>
@@ -108,14 +108,14 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()" data-form-select-other-textby="@item.Code.ToCamelCase()Text"
                                                    aria-label="@item.Title" aria-describedby="@item.Code.ToCamelCase()-at">
                                         </div>
 
-                                        <div class="input-group my-3">
+                                        <div class="input-group my-3 d-none">
                                             <span class="input-group-text" id="@item.Code.ToCamelCase()Text-at">Γιατί;</span>
                                             <textarea class="form-control" rows="3" placeholder="Γιατί;" aria-label="Γιατί;" id="@item.Code.ToCamelCase()Text"
-                                                aria-describedby="@item.Code.ToCamelCase()Text-at"></textarea>
+                                                aria-describedby="@item.Code.ToCamelCase()Text-at" required></textarea>
                                         </div>
                                     </td>
                                 </tr>
@@ -150,17 +150,17 @@
                         <div class="input-group my-3">
 
                             <span class="input-group-text" id="study-process-at">διεκπαιραίωση εργασιών</span>
-                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-true" autocomplete="off"
+                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-true" autocomplete="off" data-form-select-other-textby="StudyProcessText"
                                 aria-label="NAI" aria-describedby="study-process-at">
                             <label class="btn btn-success" for="StudyProcess-true">ΝΑΙ</label>
 
-                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-false" autocomplete="off"
+                            <input type="radio" class="btn-check" name="StudyProcess" id="StudyProcess-false" autocomplete="off" data-form-select-other-textby="StudyProcessText"
                                 aria-label="ΟΧΙ" aria-describedby="study-process-at">
                             <label class="btn btn-danger" for="StudyProcess-false">ΟΧΙ</label>
 
                         </div>
                         
-                        <div class="input-group my-3">
+                        <div class="input-group my-3 d-none">
                             <span class="input-group-text" id="study-process-other-at">Αν ναι, ποιο;</span>
                             <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="StudyProcessText"
                                 aria-describedby="study-process-other-at" required></textarea>
@@ -174,17 +174,17 @@
                         <div class="input-group my-3">
 
                             <span class="input-group-text" id="LabParticipation-at">διεξαγωγή εργαστηριακών εργασιών</span>
-                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-true" autocomplete="off"
+                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-true" autocomplete="off" data-form-select-other-textby="LabParticipationText"
                                 aria-label="NAI" aria-describedby="LabParticipation-at">
                             <label class="btn btn-success" for="LabParticipation-true">ΝΑΙ</label>
 
-                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-false" autocomplete="off"
+                            <input type="radio" class="btn-check" name="LabParticipation" id="LabParticipation-false" autocomplete="off" data-form-select-other-textby="LabParticipationText"
                                 aria-label="ΟΧΙ" aria-describedby="LabParticipation-at">
                             <label class="btn btn-danger" for="LabParticipation-false">ΟΧΙ</label>
 
                         </div>
                         
-                        <div class="input-group my-3">
+                        <div class="input-group my-3 d-none">
                             <span class="input-group-text" id="LabParticipation-other-at">Αν ναι, ποιο;</span>
                             <textarea class="form-control" rows="3" placeholder="Ποιο (γράψτε)" aria-label="Ποιο; (γράψτε)" id="LabParticipationText"
                                 aria-describedby="LabParticipation-other-at" required></textarea>
@@ -198,17 +198,17 @@
                         <div class="input-group my-3">
 
                             <span class="input-group-text" id="PcUsage-at">Χρήση Η/Υ</span>
-                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-true" autocomplete="off"
+                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-true" autocomplete="off" data-form-select-other-textby="PcUsageText"
                                 aria-label="NAI" aria-describedby="PcUsage-at">
                             <label class="btn btn-success" for="PcUsage-true">ΝΑΙ</label>
 
-                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-false" autocomplete="off"
+                            <input type="radio" class="btn-check" name="PcUsage" id="PcUsage-false" autocomplete="off" data-form-select-other-textby="PcUsageText"
                                 aria-label="ΟΧΙ" aria-describedby="PcUsage-at">
                             <label class="btn btn-danger" for="PcUsage-false">ΟΧΙ</label>
 
                         </div>
                         
-                        <div class="input-group my-3">
+                        <div class="input-group my-3 d-none">
                             <span class="input-group-text" id="PcUsage-other-at">Αν όχι, γιατί;</span>
                             <textarea class="form-control" rows="3" placeholder="Γιατί (γράψτε)" aria-label="Γιατί; (γράψτε)" id="PcUsageText"
                                 aria-describedby="PcUsage-other-at" required></textarea>
@@ -228,14 +228,14 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()"
+                                            <input class="form-check-input" type="checkbox" value="" id="@item.Code.ToCamelCase()" data-form-select-other-textby="@item.Code.ToCamelCase()Text"
                                                    aria-label="Σκάλες" aria-describedby="@item.Code.ToCamelCase()-at">
                                         </div>
                                         
-                                        <div class="input-group my-3">
+                                        <div class="input-group my-3 d-none">
                                             <span class="input-group-text" id="@item.Code.ToCamelCase()-other-at">Γιατί;</span>
                                             <textarea class="form-control" rows="3" placeholder="Γιατί;" aria-label="Γιατί;" id="@item.Code.ToCamelCase()Text"
-                                                aria-describedby="@item.Code.ToCamelCase()-other-at"></textarea>
+                                                aria-describedby="@item.Code.ToCamelCase()-other-at" required></textarea>
                                         </div>
                                     </td>
                                 </tr>
