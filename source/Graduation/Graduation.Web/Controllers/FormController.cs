@@ -41,7 +41,7 @@ namespace Graduation.Web.Controllers
                 {
                     Step = step,
                     Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
-                    PostalCodes = await this._postalCodeProviderService.GetPostalCodesAsync(cancellationToken) ?? new List<PostalCode>(),
+                    PostalCodes = (await this._postalCodeProviderService.GetPostalCodesAsync(cancellationToken))?.OrderBy(x => x.Code).ToList() ?? new List<PostalCode>(),
                     Departments = departments
                         .Where(x => x.DepartmentLocalizations.Any())
                         .Select(x => new DepartmentModel

@@ -101,6 +101,26 @@ interface FormModel
     Suggestions: string
 }
 
+const isCheckbox = function (element: HTMLInputElement): boolean
+{
+    return element instanceof HTMLInputElement && element.type === 'checkbox';
+}
+
+const isRadio = function (element: HTMLInputElement): boolean
+{
+    return element instanceof HTMLInputElement && element.type === 'radio';
+}
+
+const isNumber = function (element: HTMLInputElement): boolean
+{
+    return element instanceof HTMLInputElement && element.type === 'number';
+}
+
+const isText = function (element: HTMLInputElement): boolean
+{
+    return element instanceof HTMLInputElement && element.type === 'text';
+}
+
 class FormStore
 {
     private static readonly key:string = 'form';
@@ -290,11 +310,11 @@ class FormStore
             case element instanceof HTMLInputElement:
             case element instanceof HTMLTextAreaElement:
 
-                if((element as any).type === 'checkbox') 
+                if(isCheckbox(element as HTMLInputElement)) 
                 {
                     (element as any).checked = value;
                 }
-                else if((element as any).type === 'radio')
+                else if(isRadio(element as HTMLInputElement))
                 {
                     let elementId = `${(element as any).name}-${value.toString()}`;
 
@@ -302,7 +322,7 @@ class FormStore
                 }
                 else
                 {
-                    (element as any).value = value;
+                    (element as any).value = value.toString();
                 }
 
                 (element as any).dispatchEvent(new Event('change'));
@@ -326,9 +346,6 @@ class FormStore
             {
                 event.preventDefault();
                 event.stopPropagation();
-
-                //element.focus();
-
             }
             else
             {
@@ -346,13 +363,13 @@ class FormStore
                     case element instanceof HTMLInputElement:
                     case element instanceof HTMLTextAreaElement:
 
-                        if((element as any).type === 'checkbox')
+                        if(isCheckbox(element as HTMLInputElement))
                         {
                             value = (element as any).checked;
                         }
-                        else if((element as any).type === 'radio')
+                        else if(isRadio(element as HTMLInputElement))
                         {
-                            var valueText = element.id.replace((element as any).name, '').replace('-', '');
+                            let valueText = element.id.replace((element as any).name, '').replace('-', '');
 
                             if(valueText === 'true' || valueText === 'false')
                             {
@@ -362,6 +379,10 @@ class FormStore
                             {
                                 value = valueText;
                             }
+                        }
+                        else if(isNumber(element as HTMLInputElement))
+                        {
+                            value = Number((element as any).value);
                         }
                         else
                         {
@@ -385,7 +406,69 @@ class FormStore
 
 (function() {
 
-    const applyOtherElement = function (element: HTMLSelectElement) {
+    const applyRules = function (element: HTMLSelectElement | HTMLInputElement): boolean
+    {
+        if(element instanceof HTMLSelectElement)
+        {
+            return true;
+        }
+        
+        if(element instanceof HTMLInputElement)
+        {
+            if(isCheckbox(element))
+            {
+                return true;
+            }
+            
+            if(isRadio(element))
+            {
+                if(!element.checked)
+                {
+                    return false;
+                }
+
+                let valueText = element.id.replace(element.name, '').replace('-', '');
+                if(!(valueText === 'true' || valueText === 'false'))
+                {
+                    return false;
+                }
+                
+                return true;
+            }
+        }        
+        
+        throw new Error('Argument out of range exception');
+    }
+    
+    const getCssClass = function (element: HTMLSelectElement | HTMLInputElement): string 
+    {
+
+        if(element instanceof HTMLSelectElement)
+        {
+            return $(element).val() === 'other' ? '' : 'd-none';
+        }
+        
+        if(element instanceof HTMLInputElement)
+        {
+            if(isCheckbox(element))
+            {
+                return element.checked ? '' : 'd-none';
+            }
+
+            if(isRadio(element))
+            {
+                let valueText = element.id.replace(element.name, '').replace('-', '');
+
+                return  element.checked && valueText === 'true' ? '' : 'd-none';
+            }
+        }
+        
+        throw new Error('Argument out of range exception');
+        
+    };
+    
+    const applyOtherElement = function (element: HTMLSelectElement | HTMLInputElement)
+    {
 
         let otherElement = document.querySelector(`#${$(element).data('form-select-other-textby')}`);
         
@@ -401,7 +484,12 @@ class FormStore
             return;
         }
         
-        let _class = $(element).val() === 'other' ? '' : 'd-none';
+        if(!applyRules(element))
+        {
+            return;
+        }
+        
+        let _class = getCssClass(element);
 
         otherElementWrapper.classList.remove('d-none');
         if(otherElement.hasAttribute('hidden-required'))
@@ -423,7 +511,7 @@ class FormStore
 
     }
 
-    const elements = (document.querySelectorAll('.needs-validation select') as any) as Array<HTMLSelectElement>;
+    const elements = (document.querySelectorAll('.needs-validation select, .needs-validation input[type=radio], .needs-validation input[type=checkbox]') as any) as Array<HTMLSelectElement | HTMLInputElement>;
 
     _.each(elements, element => 
     {
@@ -443,8 +531,8 @@ class FormStore
 (window as any).Form = (function(form: any) {
     'use strict'
 
-    form.submit = function () {
-      
+    form.submit = function ()
+    {
         let store = new FormStore();
         
         let form = store.Get();

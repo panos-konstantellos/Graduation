@@ -6,7 +6,12 @@
     window.Form = (function(form) {
         'use strict'
     
-        form.submitWithUi = function () {
+        form.submitWithUi = function (element)
+        {
+            if (!element.checkValidity())
+            {
+                return;
+            }
             
             window.Form.submit().then(function () 
             {
@@ -29,7 +34,7 @@
     })(window.Form || {});
 </script>
 
-<form class="needs-validation" onsubmit="window.Form.submitWithUi(); return false;" novalidate>
+<form class="needs-validation" onsubmit="window.Form.submitWithUi(this); return false;" novalidate>
     <div class="row">
 
         <div class="col-12">
