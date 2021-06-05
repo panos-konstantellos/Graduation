@@ -443,8 +443,8 @@ class FormStore
 (window as any).Form = (function(form: any) {
     'use strict'
 
-    form.submit = function () {
-      
+    form.submit = function ()
+    {
         let store = new FormStore();
         
         let form = store.Get();
