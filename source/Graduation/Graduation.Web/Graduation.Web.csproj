@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
@@ -24,15 +20,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Theme\**" />
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Theme\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Remove="Theme\**" />
+        <Content Update="Theme\**" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <Content Update="package.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <Content Update="package-lock.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <Content Update="tsconfig.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <Content Update="gulpfile.js" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+        <Content Update="webpack.config.js" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
     </ItemGroup>
 
 </Project>
