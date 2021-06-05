@@ -1,7 +1,7 @@
 # Graduation
 
 Graduation is a Bachelor's Degree final project for the [University of West Attica](http://www.ice.uniwa.gr).
-Live demo is available [here](https://ntellos13.github.io/)
+Live demo is available [here](https://graduation.devnt.gr/)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
