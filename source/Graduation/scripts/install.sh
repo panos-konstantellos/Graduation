@@ -37,7 +37,7 @@ fi
 
 rm -rf /opt/dotnet-graduation
 cp -rf ./out /opt/dotnet-graduation
-cp -rf Scripts/dotnet-graduation.service /etc/systemd/system/dotnet-graduation.service
+cp -rf scripts/dotnet-graduation.service /etc/systemd/system/dotnet-graduation.service
 
 systemctl daemon-reload
 systemctl start dotnet-graduation
