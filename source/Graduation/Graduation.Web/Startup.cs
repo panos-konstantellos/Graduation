@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 
 using Graduation.Core;
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+
 namespace Graduation.Web
 {
     public class Startup
@@ -26,12 +29,20 @@ namespace Graduation.Web
                 .AddIdentity(this._configuration);
             
             services.AddDatabaseDeveloperPageExceptionFilter();
+            
             services.AddControllers(x =>
             {
                 x.Filters.Add(new ApiExceptionFilter());
             });
 
-            services.AddRazorPages();
+            services
+                .Configure<CookiePolicyOptions>(options =>
+                {
+                    options.CheckConsentNeeded = _ => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                })
+                .Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto)
+                .AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,17 +56,19 @@ namespace Graduation.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+                app.UseForwardedHeaders();
+                // app.UseMigrationsEndPoint();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseForwardedHeaders();
+                app.UseHsts(); // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 

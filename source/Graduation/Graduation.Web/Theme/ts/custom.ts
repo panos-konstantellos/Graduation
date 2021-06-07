@@ -1,5 +1,6 @@
 import $ from "jquery";
 import _ from "lodash";
+import 'owl.carousel';
 
 enum Gender
 {
@@ -567,3 +568,17 @@ class FormStore
     return form;
     
 })((window as any).Form || {});
+
+(function (){
+    'use strict';
+
+    let carouselWrap: any = $('.owl-carousel');
+    
+    carouselWrap.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        dots: false
+    });
+    
+})();

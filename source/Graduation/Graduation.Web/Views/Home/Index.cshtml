@@ -1,12 +1,44 @@
-﻿@model Graduation.Web.Models.FormStepOneModel 
+﻿@model Graduation.Web.Models.HomeViewModel 
 @{
-    ViewData["Title"] = "Hello World";
+    ViewData["Title"] = "Αρχική Σελίδα";
 }
+<div class="main-slider">
+    <div class="owl-carousel owl-theme">
+        <div style="background: url('slider/1.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/2.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/3.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/4.jpg') no-repeat scroll center center / cover" ></div>
+    </div>
+</div>
 
-<div class="page page-form step-1 container-fluid">
+<div class="page container-fluid home-container">
+    
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-lg-10">
             <h1>@ViewData["Title"]</h1>
+
+            <div class="card my-2">
+                <h2 class="card-header">@this.Model.GoalTitle</h2>
+                <div class="card-body">
+                    <p class="card-text">@this.Model.GoalDescription orem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis enim efficitur, imperdiet justo dapibus, commodo velit. Suspendisse eget justo pharetra, molestie ligula ac, commodo ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam pharetra pulvinar nulla, in aliquet felis auctor nec. Nullam et nibh urna. Ut egestas augue augue, et sollicitudin libero vulputate in. Phasellus scelerisque venenatis malesuada. Aliquam rhoncus laoreet sapien, ut vehicula erat elementum sed.</p>
+                    @* <a href="#" class="btn btn-primary">Go somewhere</a> *@
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <h2 class="card-header">@this.Model.QuickActionTitle</h2>
+                        <div class="card-body">
+                            @* <p class="card-text">@this.Model.GoalDescription</p> *@
+                            <a class="btn btn-primary my-1" asp-controller="Form" asp-action="Index">Συμπληρώστε την φόρμα</a>
+                            <a class="btn btn-primary my-1" asp-area="" asp-controller="Home" asp-action="Privacy">Πολιτική απορρήτου</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </div>

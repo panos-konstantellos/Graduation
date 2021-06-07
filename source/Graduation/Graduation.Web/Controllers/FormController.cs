@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -7,6 +8,7 @@ using Graduation.Core;
 using Graduation.Core.Data;
 using Graduation.Web.Models;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +33,8 @@ namespace Graduation.Web.Controllers
         {
             FormStepModel model = null;
 
+            var currentUri = GetUrl(this.ControllerContext.HttpContext.Request);
+            
             if (step == 1)
             {
                 var departments = await this._educationContext.Departments
@@ -40,7 +44,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepOneModel
                 {
                     Step = step,
-                    Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     PostalCodes = (await this._postalCodeProviderService.GetPostalCodesAsync(cancellationToken))?.OrderBy(x => x.Code).ToList() ?? new List<PostalCode>(),
                     Departments = departments
                         .Where(x => x.DepartmentLocalizations.Any())
@@ -67,7 +71,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepTwoModel
                 {
                     Step = step,
-                    Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     QualificationTypes = qualificationTypes
                         .Select(x => new QualificationTypeModel
                         {
@@ -86,7 +90,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepThreeModel
                 {
                     Step = step,
-                    Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     AbilityModels = abilities
                         .Select(x => new AbilityModel
                         {
@@ -119,7 +123,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFourModel
                 {
                     Step = step,
-                    Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     OperationalDifficultyModels = operationalDifficulties
                         .Select(x => new OperationalDifficultyModel
                         {
@@ -174,7 +178,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFiveModel
                 {
                     Step = step,
-                    Baseurl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}",
+                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
                     ExamAidModels = examAids
                         .Select(x => new ExamAidModel
                         {
@@ -187,6 +191,40 @@ namespace Graduation.Web.Controllers
             }
             
             return this.View(model);
+        }
+        
+        
+        private static Uri GetUrl(HttpRequest request)
+        {
+            var uriBuilder = new UriBuilder();
+
+            var host = request.Headers.TryGetValue("X-Forwarded-Host", out var _host)
+                ? new HostString(_host.ToString().NullIfEmpty() ?? request.Host.ToString())
+                : request.Host;
+
+            var scheme = request.Headers.TryGetValue("X-Forwarded-Proto", out var _proto)
+                ? _proto.ToString().NullIfEmpty() ?? request.Scheme
+                : request.Scheme;
+
+            var port = host.Port ?? -1;
+
+            if (scheme.Equals("http", StringComparison.OrdinalIgnoreCase) && port == 80)
+            {
+                port = -1;
+            }
+
+            if (scheme.Equals("https", StringComparison.OrdinalIgnoreCase) && port == 443)
+            {
+                port = -1;
+            }
+
+            uriBuilder.Scheme = scheme;
+            uriBuilder.Host = host.Host;
+            uriBuilder.Port = host.Port ?? -1;
+            uriBuilder.Path = request.Path.HasValue ? request.Path.Value : string.Empty;
+            uriBuilder.Query = request.QueryString.HasValue ? request.QueryString.Value : string.Empty;
+
+            return uriBuilder.Uri;
         }
     }
 }

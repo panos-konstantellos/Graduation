@@ -1,0 +1,25 @@
+@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent" class="alert alert-primary alert-dismissible fade show my-0" role="alert">
+        Χρησιμοποιούμε cookies για να κάνουμε καλύτερη την εμπειρία σας στο site. Επιλέγοντας «Αποδοχή» παρέχετε τη συγκατάθεση σας για τη χρήση των cookies, σύμφωνα με την <a asp-area="" asp-controller="Home" asp-action="Privacy">Πολιτική απορρήτου</a> μας.
+        <button type="button" class="accept-policy btn btn-primary close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+            <span aria-hidden="true">Αποδέχομαι</span>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+            button.addEventListener("click", function (event) {
+                document.cookie = button.dataset.cookieString;
+            }, false);
+        })();
+    </script>
+}
