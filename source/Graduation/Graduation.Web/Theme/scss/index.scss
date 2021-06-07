@@ -1,4 +1,6 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../node_modules/owl.carousel/dist/assets/owl.carousel"; // import css files without extension. If extension is passed, then import css rule is compiled
+@import "../../node_modules/owl.carousel/dist/assets/owl.theme.default";
 
 @import "master";
 @import "form";
@@ -13,4 +15,11 @@
 
 .section-container { background-color: lighten($primary, 45%);
     border: 1px solid $primary;
+}
+
+.home-container h1 { color: #fff; text-shadow: 2px 2px 5px #000; }
+
+.main-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    &:before { content: ''; position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background-color: transparentize($black, .7); }
+    div { display: block; width: 100%; height: 100%; }
 }

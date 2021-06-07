@@ -2,12 +2,21 @@
 @{
     ViewData["Title"] = "Αρχική Σελίδα";
 }
+<div class="main-slider">
+    <div class="owl-carousel owl-theme">
+        <div style="background: url('slider/1.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/2.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/3.jpg') no-repeat scroll center center / cover" ></div>
+        <div style="background: url('slider/4.jpg') no-repeat scroll center center / cover" ></div>
+    </div>
+</div>
 
-<div class="page container-fluid">
+<div class="page container-fluid home-container">
+    
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-lg-10">
             <h1>@ViewData["Title"]</h1>
-            
+
             <div class="card my-2">
                 <h2 class="card-header">@this.Model.GoalTitle</h2>
                 <div class="card-body">
@@ -24,12 +33,12 @@
                             <a class="btn btn-primary my-1" asp-controller="Form" asp-action="Index">Συμπληρώστε την φόρμα</a>
                             <a class="btn btn-primary my-1" asp-area="" asp-controller="Home" asp-action="Privacy">Πολιτική απορρήτου</a>
                         </div>
-                    </div>        
+                    </div>
                 </div>
             </div>
-            
-            
-            
+
+
+
         </div>
     </div>
 </div>
