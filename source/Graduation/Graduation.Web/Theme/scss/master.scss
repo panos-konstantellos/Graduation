@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+}
+
+* { font-family: 'Open Sans', sans-serif; }
+
+.site-logo { max-height: 2em; }
+
+.navbar-light .navbar-brand { padding: 0; }
+
+.page { margin: 2em 0; }

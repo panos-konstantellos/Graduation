@@ -1,14 +1,10 @@
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Graduation.Core;
 using Graduation.Web.Models;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Graduation.Web.Controllers
 {
@@ -16,7 +12,12 @@ namespace Graduation.Web.Controllers
     {
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
-            return this.View();
+            return this.View(new HomeViewModel
+            {
+                GoalTitle = @"Αποστολή της Μονάδας Προσβασιμότητας",
+                GoalDescription = @"είναι η επίτευξη στην πράξη της ισότιμης πρόσβασης στις ακαδημαϊκές σπουδές των φοιτητών με διαφορετικές ικανότητες και απαιτήσεις, μέσω της παροχής προσαρμογών στο περιβάλλον, Υποστηρικτικών Τεχνολογιών Πληροφορικής και Υπηρεσιών Πρόσβασης.",
+                QuickActionTitle = @"Γρήγορη Πρόσβαση"
+            });
         }
         
         public IActionResult Privacy()

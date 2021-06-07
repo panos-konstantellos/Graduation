@@ -3,8 +3,6 @@ using System.Text.Json.Serialization;
 
 using FluentValidation;
 
-using Graduation.Core;
-
 namespace Graduation.Web.Models
 {
     public class FormSubmitRequest

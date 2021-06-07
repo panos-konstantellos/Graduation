@@ -10,3 +10,7 @@
         .form-select { width: auto; }
     }
 }
+
+.section-container { background-color: lighten($primary, 45%);
+    border: 1px solid $primary;
+}

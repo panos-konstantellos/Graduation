@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Graduation</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img class="site-logo" src="~/logo.png">Graduation</a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,25 +19,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Αρχική</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Form" asp-action="Index">Submit form</a>
+                        <a class="nav-link" asp-area="" asp-controller="Form" asp-action="Index">Συμπληρώστε την φόρμα</a>
                     </li>
                 </ul>
-                @* <form class="d-flex"> *@
-                @*     <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search"> *@
-                @*     <button class="btn btn-outline-success" type="submit">Search</button> *@
-                @* </form> *@
                 
                 <div class="navbar-collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial"/>
                 </div>
                 
             </div>
-            
-
             
         </div>
     </nav>
@@ -47,7 +41,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2021 - Graduation.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; @DateTime.UtcNow.Year - Graduation.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Πολιτική απορρήτου</a>
     </div>
 </footer>
 
@@ -55,5 +49,8 @@
 <script src="~/js/system.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
+
+<script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "0A0oJ0qa5A");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
+
 </body>
 </html>
