@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 using Graduation.Core;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 
 namespace Graduation.Web
@@ -35,6 +36,11 @@ namespace Graduation.Web
             });
 
             services
+                .Configure<CookiePolicyOptions>(options =>
+                {
+                    options.CheckConsentNeeded = _ => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                })
                 .Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto)
                 .AddRazorPages();
         }
@@ -62,6 +68,7 @@ namespace Graduation.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
