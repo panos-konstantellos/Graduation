@@ -25,27 +25,27 @@ window.Form = (function(form) {
             @{
                 if (this.Model is FormStepOneModel)
                 {
-                    @Html.Partial("~/Views/Partials/FormStepOne.cshtml", this.Model as FormStepOneModel);                    
+                    @Html.PartialAsync("~/Views/Partials/FormStepOne.cshtml", this.Model as FormStepOneModel);                    
                 }
                 
                 if (this.Model is FormStepTwoModel)
                 {
-                    @Html.Partial("~/Views/Partials/FormStepTwo.cshtml", this.Model as FormStepTwoModel);                    
+                    @Html.PartialAsync("~/Views/Partials/FormStepTwo.cshtml", this.Model as FormStepTwoModel);                    
                 }
                 
                 if (this.Model is FormStepThreeModel)
                 {
-                    @Html.Partial("~/Views/Partials/FormStepThree.cshtml", this.Model as FormStepThreeModel);                    
+                    @Html.PartialAsync("~/Views/Partials/FormStepThree.cshtml", this.Model as FormStepThreeModel);                    
                 }
                 
                 if (this.Model is FormStepFourModel)
                 {
-                    @Html.Partial("~/Views/Partials/FormStepFour.cshtml", this.Model as FormStepFourModel);                    
+                    @Html.PartialAsync("~/Views/Partials/FormStepFour.cshtml", this.Model as FormStepFourModel);                    
                 }
                 
                 if (this.Model is FormStepFiveModel)
                 {
-                    @Html.Partial("~/Views/Partials/FormStepFive.cshtml", this.Model as FormStepFiveModel);                    
+                    @Html.PartialAsync("~/Views/Partials/FormStepFive.cshtml", this.Model as FormStepFiveModel);                    
                 }
             }
         </div>

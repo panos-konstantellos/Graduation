@@ -12,6 +12,8 @@ namespace Graduation.Web.Controllers
     {
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+            
             return this.View(new HomeViewModel
             {
                 GoalTitle = @"Αποστολή της Μονάδας Προσβασιμότητας",
