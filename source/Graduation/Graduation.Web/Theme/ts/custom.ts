@@ -543,7 +543,7 @@ class FormStore
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(form),
-                url: `${(window as any).Form.baseUrl}/form`,
+                url: `${(window as any).Form.baseUrl}form`,
                 contentType: "application/json charset=utf-8",
                 headers:
                 {
