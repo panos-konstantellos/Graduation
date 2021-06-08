@@ -33,7 +33,7 @@ namespace Graduation.Web.Controllers
         {
             FormStepModel model = null;
 
-            var currentUri = GetUrl(this.ControllerContext.HttpContext.Request);
+            var currentUri = GetBaseUrl(GetUrl(this.ControllerContext.HttpContext.Request));
             
             if (step == 1)
             {
@@ -44,7 +44,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepOneModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
+                    Baseurl = currentUri.ToString(),
                     PostalCodes = (await this._postalCodeProviderService.GetPostalCodesAsync(cancellationToken))?.OrderBy(x => x.Code).ToList() ?? new List<PostalCode>(),
                     Departments = departments
                         .Where(x => x.DepartmentLocalizations.Any())
@@ -71,7 +71,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepTwoModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
+                    Baseurl = currentUri.ToString(),
                     QualificationTypes = qualificationTypes
                         .Select(x => new QualificationTypeModel
                         {
@@ -90,7 +90,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepThreeModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
+                    Baseurl = currentUri.ToString(),
                     AbilityModels = abilities
                         .Select(x => new AbilityModel
                         {
@@ -123,7 +123,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFourModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
+                    Baseurl = currentUri.ToString(),
                     OperationalDifficultyModels = operationalDifficulties
                         .Select(x => new OperationalDifficultyModel
                         {
@@ -178,7 +178,7 @@ namespace Graduation.Web.Controllers
                 model = new FormStepFiveModel
                 {
                     Step = step,
-                    Baseurl = $"{currentUri.Scheme}://{currentUri.Host}",
+                    Baseurl = currentUri.ToString(),
                     ExamAidModels = examAids
                         .Select(x => new ExamAidModel
                         {
@@ -225,6 +225,17 @@ namespace Graduation.Web.Controllers
             uriBuilder.Query = request.QueryString.HasValue ? request.QueryString.Value : string.Empty;
 
             return uriBuilder.Uri;
+        }
+
+        private static Uri GetBaseUrl(Uri uri)
+        {
+            var buidler = new UriBuilder();
+
+            buidler.Scheme = uri.Scheme;
+            buidler.Host = uri.Host;
+            buidler.Port = uri.Port;
+            
+            return buidler.Uri;
         }
     }
 }
