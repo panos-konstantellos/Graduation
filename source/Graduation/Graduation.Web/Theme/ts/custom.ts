@@ -163,29 +163,20 @@ class FormStore
     'use strict'
 
     const forms = document.querySelectorAll('.needs-validation') as any;
-    const elements = (document.querySelectorAll('.needs-validation input, .needs-validation textarea, .needs-validation select') as any) as Array<HTMLElement>;
 
     _.each(forms, form => 
     {
         form.addEventListener('submit', (event) =>
         {
-            _.each(elements, element =>
+            if (!form.checkValidity())
             {
-                element.dispatchEvent(new Event('focusout'));
-            });
+                event.preventDefault();
+                event.stopPropagation();
 
-            setTimeout(() =>
-            {
-                if (!form.checkValidity())
-                {
-                    event.preventDefault();
-                    event.stopPropagation();
+                $('form.needs-validation :invalid')[0].scrollIntoView(true);
+            }
 
-                    $('form.needs-validation :invalid')[0].scrollIntoView(true);
-                }
-
-                form.classList.add('was-validated');
-            },0);
+            form.classList.add('was-validated');
             
         }, false);
     });
