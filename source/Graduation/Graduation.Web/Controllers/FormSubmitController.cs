@@ -137,7 +137,7 @@ namespace Graduation.Web.Controllers
 
         private static async Task InsertOrUpdateStudent(EducationContext _context, IPostalCodeProviderService service, FormSubmitRequest request, CancellationToken cancellationToken)
         {
-            var country = await _context.Countries.Where(x => x.Code == "gr").SingleAsync(cancellationToken);
+            var country = await _context.Countries.Where(x => x.Code == "GR").SingleAsync(cancellationToken);
             var student = await _context.Students
                 .Where(x => x.RegistrationId == request.StudentId)
                 .FirstOrDefaultAsync(cancellationToken);
