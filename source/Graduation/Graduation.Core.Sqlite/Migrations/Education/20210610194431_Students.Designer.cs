@@ -2,14 +2,16 @@
 using Graduation.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Graduation.Core.Sqlite.Migrations.Education
 {
     [DbContext(typeof(EducationContext))]
-    partial class EducationContextModelSnapshot : ModelSnapshot
+    [Migration("20210610194431_Students")]
+    partial class Students
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
