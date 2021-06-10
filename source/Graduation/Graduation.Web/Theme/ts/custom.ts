@@ -335,14 +335,14 @@ class FormStore
     
     _.each(elements, element =>
     {
-        element.addEventListener('focusout', (event) =>
+        let updateValue = function (event)
         {
             element.classList.remove('is-valid', 'is-invalid');
 
             var isValid = (element as any).checkValidity();
-            
+
             element.classList.add(isValid ? 'is-valid' : 'is-invalid');
-            
+
             if (!isValid)
             {
                 event.preventDefault();
@@ -355,9 +355,9 @@ class FormStore
                 {
                     return;
                 }
-                
-                let value; 
-                
+
+                let value;
+
                 switch (true)
                 {
                     case element instanceof HTMLSelectElement:
@@ -389,19 +389,24 @@ class FormStore
                         {
                             value = (element as any).value;
                         }
-                        
+
                         break;
                     default:
                         throw new Error('invalid element');
                 }
 
                 form[key] = value;
-                
+
                 store.Set(form);
-                
+
             }
-            
-        }, false);
+
+        };
+
+        element.addEventListener('change', updateValue, false);
+        element.addEventListener('focusout', updateValue, false);
+        element.addEventListener('keyup', updateValue, false);
+        element.addEventListener('input', updateValue, false);
     });
 })();
 

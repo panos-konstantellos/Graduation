@@ -8,43 +8,48 @@
     
         form.submitWithUi = function (element)
         {
-            if (!element.checkValidity())
+            setTimeout(() =>
             {
-                return;
-            }
-            
-            window.Form.submit()
-                .then(function () 
+                
+                if (!element.checkValidity())
                 {
-                    let form = document.querySelector("form.needs-validation");
-                    let wrapper = form.parentNode;
-                    
-                    wrapper.removeChild(form);
-                    
-                    var newChild = document.createElement('span');
-                    
-                    newChild.textContent = 'Form submited successfully';
-                    
-                    wrapper.appendChild(newChild);
-                })
-                .then(null, function (error) 
-                {
-                    let errorInput = document.querySelector('form #error-check');
-                    let errorContainer = document.querySelector('form #error-check ~ .invalid-feedback');
-                    
-                    let text = 'generic error';
-                    
-                    if (!!error.responseJSON)
+                    return;
+                }
+                
+                window.Form.submit()
+                    .then(function () 
                     {
-                        text =  error.responseJSON.message;
-                    }
-                    
-                    errorContainer.innerHTML = text; 
-                    errorInput.classList.add('is-invalid');
-                    
-                    errorContainer.scrollIntoView(true);
-                    
-                });
+                        let form = document.querySelector("form.needs-validation");
+                        let wrapper = form.parentNode;
+                        
+                        wrapper.removeChild(form);
+                        
+                        var newChild = document.createElement('span');
+                        
+                        newChild.textContent = 'Form submited successfully';
+                        
+                        wrapper.appendChild(newChild);
+                    })
+                    .then(null, function (error) 
+                    {
+                        let errorInput = document.querySelector('form #error-check');
+                        let errorContainer = document.querySelector('form #error-check ~ .invalid-feedback');
+                        
+                        let text = 'generic error';
+                        
+                        if (!!error.responseJSON)
+                        {
+                            text =  error.responseJSON.message;
+                        }
+                        
+                        errorContainer.innerHTML = text; 
+                        errorInput.classList.add('is-invalid');
+                        
+                        errorContainer.scrollIntoView(true);
+                        
+                    });
+                
+            }, 0);
             
         };
         
