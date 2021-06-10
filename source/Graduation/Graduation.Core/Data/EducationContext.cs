@@ -14,7 +14,7 @@ namespace Graduation.Core
 
         public DbSet<LocalizedResource> LocalizedResources { get; set; }
         
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         public DbSet<Department> Departments { get; set; }
 
