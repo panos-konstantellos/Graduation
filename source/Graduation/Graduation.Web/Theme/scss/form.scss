@@ -36,6 +36,27 @@ form.needs-validation {
     :invalid ~ .invalid-feedback{ opacity: 1 }
   }
 
+  .form-control, .form-select, .form-check-input {
+    &:focus {
+      outline-color: $primary;
+      outline-width: 0.1rem;
+      outline-style: dotted;
+    }
+
+    &.is-valid {
+      &:focus {
+        outline-color: $form-feedback-valid-color;
+      }
+    }
+
+    &.is-invalid {
+      &:focus {
+        outline-color: $form-feedback-invalid-color;
+      }
+    }
+    
+  }
+  
   input[type="radio"]:checked + label,
   input[type="radio"] + label:hover {
 
