@@ -9,7 +9,7 @@ Type=simple
 WorkingDirectory=/opt/dotnet-graduation
 ExecStart=dotnet /opt/dotnet-graduation/Graduation.Web.dll
 SyslogIdentifier=dotnet-graduation
-Environment="ASPNETCORE_URLS=http://*:50003"
+Environment="ASPNETCORE_URLS=https://*:50003"
 
 # Use your username to keep things simple.
 # If you pick a different user, make sure dotnet and all permissions are set correctly to run the app
