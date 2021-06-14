@@ -56,6 +56,10 @@ form.needs-validation {
     }
     
   }
+
+  fieldset {
+    legend.input-group-text { width: auto; margin-bottom: 0; }
+  }
   
   input[type="radio"]:checked + label,
   input[type="radio"] + label:hover {
