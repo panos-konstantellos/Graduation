@@ -115,6 +115,1544 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                     b.ToTable("edu_AbilityLocalizations");
                 });
 
+            modelBuilder.Entity("Graduation.Core.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DefaultName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("sys_Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "AF",
+                            DefaultName = "Afghanistan"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "AX",
+                            DefaultName = "Åland Islands"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "AL",
+                            DefaultName = "Albania"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "DZ",
+                            DefaultName = "Algeria"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "AS",
+                            DefaultName = "American Samoa"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "AD",
+                            DefaultName = "Andorra"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "AO",
+                            DefaultName = "Angola"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "AI",
+                            DefaultName = "Anguilla"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "AQ",
+                            DefaultName = "Antarctica"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "AG",
+                            DefaultName = "Antigua and Barbuda"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "AR",
+                            DefaultName = "Argentina"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "AM",
+                            DefaultName = "Armenia"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "AW",
+                            DefaultName = "Aruba"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "AU",
+                            DefaultName = "Australia"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "AT",
+                            DefaultName = "Austria"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Code = "AZ",
+                            DefaultName = "Azerbaijan"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Code = "BS",
+                            DefaultName = "Bahamas"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Code = "BH",
+                            DefaultName = "Bahrain"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Code = "BD",
+                            DefaultName = "Bangladesh"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Code = "BB",
+                            DefaultName = "Barbados"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Code = "BY",
+                            DefaultName = "Belarus"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Code = "BE",
+                            DefaultName = "Belgium"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "BZ",
+                            DefaultName = "Belize"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Code = "BJ",
+                            DefaultName = "Benin"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Code = "BM",
+                            DefaultName = "Bermuda"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Code = "BT",
+                            DefaultName = "Bhutan"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Code = "BO",
+                            DefaultName = "Bolivia, Plurinational State of"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Code = "BQ",
+                            DefaultName = "Bonaire, Sint Eustatius and Saba"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Code = "BA",
+                            DefaultName = "Bosnia and Herzegovina"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Code = "BW",
+                            DefaultName = "Botswana"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Code = "BV",
+                            DefaultName = "Bouvet Island"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Code = "BR",
+                            DefaultName = "Brazil"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Code = "IO",
+                            DefaultName = "British Indian Ocean Territory"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Code = "BN",
+                            DefaultName = "Brunei Darussalam"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Code = "BG",
+                            DefaultName = "Bulgaria"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Code = "BF",
+                            DefaultName = "Burkina Faso"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Code = "BI",
+                            DefaultName = "Burundi"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Code = "KH",
+                            DefaultName = "Cambodia"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Code = "CM",
+                            DefaultName = "Cameroon"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Code = "CA",
+                            DefaultName = "Canada"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Code = "CV",
+                            DefaultName = "Cape Verde"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Code = "KY",
+                            DefaultName = "Cayman Islands"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Code = "CF",
+                            DefaultName = "Central African Republic"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Code = "TD",
+                            DefaultName = "Chad"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Code = "CL",
+                            DefaultName = "Chile"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Code = "CN",
+                            DefaultName = "China"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Code = "CX",
+                            DefaultName = "Christmas Island"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Code = "CC",
+                            DefaultName = "Cocos (Keeling) Islands"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Code = "CO",
+                            DefaultName = "Colombia"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Code = "KM",
+                            DefaultName = "Comoros"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Code = "CG",
+                            DefaultName = "Congo"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Code = "CD",
+                            DefaultName = "Congo, the Democratic Republic of the"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Code = "CK",
+                            DefaultName = "Cook Islands"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Code = "CR",
+                            DefaultName = "Costa Rica"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Code = "CI",
+                            DefaultName = "Côte d'Ivoire"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Code = "HR",
+                            DefaultName = "Croatia"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Code = "CU",
+                            DefaultName = "Cuba"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Code = "CW",
+                            DefaultName = "Curaçao"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Code = "CY",
+                            DefaultName = "Cyprus"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Code = "CZ",
+                            DefaultName = "Czech Republic"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Code = "DK",
+                            DefaultName = "Denmark"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Code = "DJ",
+                            DefaultName = "Djibouti"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Code = "DM",
+                            DefaultName = "Dominica"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Code = "DO",
+                            DefaultName = "Dominican Republic"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Code = "EC",
+                            DefaultName = "Ecuador"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Code = "EG",
+                            DefaultName = "Egypt"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Code = "SV",
+                            DefaultName = "El Salvador"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Code = "GQ",
+                            DefaultName = "Equatorial Guinea"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            Code = "ER",
+                            DefaultName = "Eritrea"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Code = "EE",
+                            DefaultName = "Estonia"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            Code = "ET",
+                            DefaultName = "Ethiopia"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Code = "FK",
+                            DefaultName = "Falkland Islands (Malvinas)"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            Code = "FO",
+                            DefaultName = "Faroe Islands"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Code = "FJ",
+                            DefaultName = "Fiji"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Code = "FI",
+                            DefaultName = "Finland"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            Code = "FR",
+                            DefaultName = "France"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            Code = "GF",
+                            DefaultName = "French Guiana"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            Code = "PF",
+                            DefaultName = "French Polynesia"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            Code = "TF",
+                            DefaultName = "French Southern Territories"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            Code = "GA",
+                            DefaultName = "Gabon"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Code = "GM",
+                            DefaultName = "Gambia"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Code = "GE",
+                            DefaultName = "Georgia"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            Code = "DE",
+                            DefaultName = "Germany"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            Code = "GH",
+                            DefaultName = "Ghana"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            Code = "GI",
+                            DefaultName = "Gibraltar"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            Code = "GR",
+                            DefaultName = "Greece"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            Code = "GL",
+                            DefaultName = "Greenland"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            Code = "GD",
+                            DefaultName = "Grenada"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            Code = "GP",
+                            DefaultName = "Guadeloupe"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            Code = "GU",
+                            DefaultName = "Guam"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            Code = "GT",
+                            DefaultName = "Guatemala"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            Code = "GG",
+                            DefaultName = "Guernsey"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            Code = "GN",
+                            DefaultName = "Guinea"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            Code = "GW",
+                            DefaultName = "Guinea-Bissau"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            Code = "GY",
+                            DefaultName = "Guyana"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            Code = "HT",
+                            DefaultName = "Haiti"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            Code = "HM",
+                            DefaultName = "Heard Island and McDonald Islands"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            Code = "VA",
+                            DefaultName = "Holy See (Vatican City State)"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            Code = "HN",
+                            DefaultName = "Honduras"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            Code = "HK",
+                            DefaultName = "Hong Kong"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Code = "HU",
+                            DefaultName = "Hungary"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Code = "IS",
+                            DefaultName = "Iceland"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Code = "IN",
+                            DefaultName = "India"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Code = "ID",
+                            DefaultName = "Indonesia"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Code = "IR",
+                            DefaultName = "Iran, Islamic Republic of"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Code = "IQ",
+                            DefaultName = "Iraq"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Code = "IE",
+                            DefaultName = "Ireland"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            Code = "IM",
+                            DefaultName = "Isle of Man"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            Code = "IL",
+                            DefaultName = "Israel"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            Code = "IT",
+                            DefaultName = "Italy"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Code = "JM",
+                            DefaultName = "Jamaica"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            Code = "JP",
+                            DefaultName = "Japan"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            Code = "JE",
+                            DefaultName = "Jersey"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            Code = "JO",
+                            DefaultName = "Jordan"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            Code = "KZ",
+                            DefaultName = "Kazakhstan"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            Code = "KE",
+                            DefaultName = "Kenya"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            Code = "KI",
+                            DefaultName = "Kiribati"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            Code = "KP",
+                            DefaultName = "Korea, Democratic People's Republic of"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            Code = "KR",
+                            DefaultName = "Korea, Republic of"
+                        },
+                        new
+                        {
+                            Id = 120,
+                            Code = "KW",
+                            DefaultName = "Kuwait"
+                        },
+                        new
+                        {
+                            Id = 121,
+                            Code = "KG",
+                            DefaultName = "Kyrgyzstan"
+                        },
+                        new
+                        {
+                            Id = 122,
+                            Code = "LA",
+                            DefaultName = "Lao People's Democratic Republic"
+                        },
+                        new
+                        {
+                            Id = 123,
+                            Code = "LV",
+                            DefaultName = "Latvia"
+                        },
+                        new
+                        {
+                            Id = 124,
+                            Code = "LB",
+                            DefaultName = "Lebanon"
+                        },
+                        new
+                        {
+                            Id = 125,
+                            Code = "LS",
+                            DefaultName = "Lesotho"
+                        },
+                        new
+                        {
+                            Id = 126,
+                            Code = "LR",
+                            DefaultName = "Liberia"
+                        },
+                        new
+                        {
+                            Id = 127,
+                            Code = "LY",
+                            DefaultName = "Libya"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            Code = "LI",
+                            DefaultName = "Liechtenstein"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            Code = "LT",
+                            DefaultName = "Lithuania"
+                        },
+                        new
+                        {
+                            Id = 130,
+                            Code = "LU",
+                            DefaultName = "Luxembourg"
+                        },
+                        new
+                        {
+                            Id = 131,
+                            Code = "MO",
+                            DefaultName = "Macao"
+                        },
+                        new
+                        {
+                            Id = 132,
+                            Code = "MK",
+                            DefaultName = "Macedonia, the Former Yugoslav Republic of"
+                        },
+                        new
+                        {
+                            Id = 133,
+                            Code = "MG",
+                            DefaultName = "Madagascar"
+                        },
+                        new
+                        {
+                            Id = 134,
+                            Code = "MW",
+                            DefaultName = "Malawi"
+                        },
+                        new
+                        {
+                            Id = 135,
+                            Code = "MY",
+                            DefaultName = "Malaysia"
+                        },
+                        new
+                        {
+                            Id = 136,
+                            Code = "MV",
+                            DefaultName = "Maldives"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            Code = "ML",
+                            DefaultName = "Mali"
+                        },
+                        new
+                        {
+                            Id = 138,
+                            Code = "MT",
+                            DefaultName = "Malta"
+                        },
+                        new
+                        {
+                            Id = 139,
+                            Code = "MH",
+                            DefaultName = "Marshall Islands"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            Code = "MQ",
+                            DefaultName = "Martinique"
+                        },
+                        new
+                        {
+                            Id = 141,
+                            Code = "MR",
+                            DefaultName = "Mauritania"
+                        },
+                        new
+                        {
+                            Id = 142,
+                            Code = "MU",
+                            DefaultName = "Mauritius"
+                        },
+                        new
+                        {
+                            Id = 143,
+                            Code = "YT",
+                            DefaultName = "Mayotte"
+                        },
+                        new
+                        {
+                            Id = 144,
+                            Code = "MX",
+                            DefaultName = "Mexico"
+                        },
+                        new
+                        {
+                            Id = 145,
+                            Code = "FM",
+                            DefaultName = "Micronesia, Federated States of"
+                        },
+                        new
+                        {
+                            Id = 146,
+                            Code = "MD",
+                            DefaultName = "Moldova, Republic of"
+                        },
+                        new
+                        {
+                            Id = 147,
+                            Code = "MC",
+                            DefaultName = "Monaco"
+                        },
+                        new
+                        {
+                            Id = 148,
+                            Code = "MN",
+                            DefaultName = "Mongolia"
+                        },
+                        new
+                        {
+                            Id = 149,
+                            Code = "ME",
+                            DefaultName = "Montenegro"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            Code = "MS",
+                            DefaultName = "Montserrat"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            Code = "MA",
+                            DefaultName = "Morocco"
+                        },
+                        new
+                        {
+                            Id = 152,
+                            Code = "MZ",
+                            DefaultName = "Mozambique"
+                        },
+                        new
+                        {
+                            Id = 153,
+                            Code = "MM",
+                            DefaultName = "Myanmar"
+                        },
+                        new
+                        {
+                            Id = 154,
+                            Code = "NA",
+                            DefaultName = "Namibia"
+                        },
+                        new
+                        {
+                            Id = 155,
+                            Code = "NR",
+                            DefaultName = "Nauru"
+                        },
+                        new
+                        {
+                            Id = 156,
+                            Code = "NP",
+                            DefaultName = "Nepal"
+                        },
+                        new
+                        {
+                            Id = 157,
+                            Code = "NL",
+                            DefaultName = "Netherlands"
+                        },
+                        new
+                        {
+                            Id = 158,
+                            Code = "NC",
+                            DefaultName = "New Caledonia"
+                        },
+                        new
+                        {
+                            Id = 159,
+                            Code = "NZ",
+                            DefaultName = "New Zealand"
+                        },
+                        new
+                        {
+                            Id = 160,
+                            Code = "NI",
+                            DefaultName = "Nicaragua"
+                        },
+                        new
+                        {
+                            Id = 161,
+                            Code = "NE",
+                            DefaultName = "Niger"
+                        },
+                        new
+                        {
+                            Id = 162,
+                            Code = "NG",
+                            DefaultName = "Nigeria"
+                        },
+                        new
+                        {
+                            Id = 163,
+                            Code = "NU",
+                            DefaultName = "Niue"
+                        },
+                        new
+                        {
+                            Id = 164,
+                            Code = "NF",
+                            DefaultName = "Norfolk Island"
+                        },
+                        new
+                        {
+                            Id = 165,
+                            Code = "MP",
+                            DefaultName = "Northern Mariana Islands"
+                        },
+                        new
+                        {
+                            Id = 166,
+                            Code = "NO",
+                            DefaultName = "Norway"
+                        },
+                        new
+                        {
+                            Id = 167,
+                            Code = "OM",
+                            DefaultName = "Oman"
+                        },
+                        new
+                        {
+                            Id = 168,
+                            Code = "PK",
+                            DefaultName = "Pakistan"
+                        },
+                        new
+                        {
+                            Id = 169,
+                            Code = "PW",
+                            DefaultName = "Palau"
+                        },
+                        new
+                        {
+                            Id = 170,
+                            Code = "PS",
+                            DefaultName = "Palestine, State of"
+                        },
+                        new
+                        {
+                            Id = 171,
+                            Code = "PA",
+                            DefaultName = "Panama"
+                        },
+                        new
+                        {
+                            Id = 172,
+                            Code = "PG",
+                            DefaultName = "Papua New Guinea"
+                        },
+                        new
+                        {
+                            Id = 173,
+                            Code = "PY",
+                            DefaultName = "Paraguay"
+                        },
+                        new
+                        {
+                            Id = 174,
+                            Code = "PE",
+                            DefaultName = "Peru"
+                        },
+                        new
+                        {
+                            Id = 175,
+                            Code = "PH",
+                            DefaultName = "Philippines"
+                        },
+                        new
+                        {
+                            Id = 176,
+                            Code = "PN",
+                            DefaultName = "Pitcairn"
+                        },
+                        new
+                        {
+                            Id = 177,
+                            Code = "PL",
+                            DefaultName = "Poland"
+                        },
+                        new
+                        {
+                            Id = 178,
+                            Code = "PT",
+                            DefaultName = "Portugal"
+                        },
+                        new
+                        {
+                            Id = 179,
+                            Code = "PR",
+                            DefaultName = "Puerto Rico"
+                        },
+                        new
+                        {
+                            Id = 180,
+                            Code = "QA",
+                            DefaultName = "Qatar"
+                        },
+                        new
+                        {
+                            Id = 181,
+                            Code = "RE",
+                            DefaultName = "Réunion"
+                        },
+                        new
+                        {
+                            Id = 182,
+                            Code = "RO",
+                            DefaultName = "Romania"
+                        },
+                        new
+                        {
+                            Id = 183,
+                            Code = "RU",
+                            DefaultName = "Russian Federation"
+                        },
+                        new
+                        {
+                            Id = 184,
+                            Code = "RW",
+                            DefaultName = "Rwanda"
+                        },
+                        new
+                        {
+                            Id = 185,
+                            Code = "BL",
+                            DefaultName = "Saint Barthélemy"
+                        },
+                        new
+                        {
+                            Id = 186,
+                            Code = "SH",
+                            DefaultName = "Saint Helena, Ascension and Tristan da Cunha"
+                        },
+                        new
+                        {
+                            Id = 187,
+                            Code = "KN",
+                            DefaultName = "Saint Kitts and Nevis"
+                        },
+                        new
+                        {
+                            Id = 188,
+                            Code = "LC",
+                            DefaultName = "Saint Lucia"
+                        },
+                        new
+                        {
+                            Id = 189,
+                            Code = "MF",
+                            DefaultName = "Saint Martin (French part)"
+                        },
+                        new
+                        {
+                            Id = 190,
+                            Code = "PM",
+                            DefaultName = "Saint Pierre and Miquelon"
+                        },
+                        new
+                        {
+                            Id = 191,
+                            Code = "VC",
+                            DefaultName = "Saint Vincent and the Grenadines"
+                        },
+                        new
+                        {
+                            Id = 192,
+                            Code = "WS",
+                            DefaultName = "Samoa"
+                        },
+                        new
+                        {
+                            Id = 193,
+                            Code = "SM",
+                            DefaultName = "San Marino"
+                        },
+                        new
+                        {
+                            Id = 194,
+                            Code = "ST",
+                            DefaultName = "Sao Tome and Principe"
+                        },
+                        new
+                        {
+                            Id = 195,
+                            Code = "SA",
+                            DefaultName = "Saudi Arabia"
+                        },
+                        new
+                        {
+                            Id = 196,
+                            Code = "SN",
+                            DefaultName = "Senegal"
+                        },
+                        new
+                        {
+                            Id = 197,
+                            Code = "RS",
+                            DefaultName = "Serbia"
+                        },
+                        new
+                        {
+                            Id = 198,
+                            Code = "SC",
+                            DefaultName = "Seychelles"
+                        },
+                        new
+                        {
+                            Id = 199,
+                            Code = "SL",
+                            DefaultName = "Sierra Leone"
+                        },
+                        new
+                        {
+                            Id = 200,
+                            Code = "SG",
+                            DefaultName = "Singapore"
+                        },
+                        new
+                        {
+                            Id = 201,
+                            Code = "SX",
+                            DefaultName = "Sint Maarten (Dutch part)"
+                        },
+                        new
+                        {
+                            Id = 202,
+                            Code = "SK",
+                            DefaultName = "Slovakia"
+                        },
+                        new
+                        {
+                            Id = 203,
+                            Code = "SI",
+                            DefaultName = "Slovenia"
+                        },
+                        new
+                        {
+                            Id = 204,
+                            Code = "SB",
+                            DefaultName = "Solomon Islands"
+                        },
+                        new
+                        {
+                            Id = 205,
+                            Code = "SO",
+                            DefaultName = "Somalia"
+                        },
+                        new
+                        {
+                            Id = 206,
+                            Code = "ZA",
+                            DefaultName = "South Africa"
+                        },
+                        new
+                        {
+                            Id = 207,
+                            Code = "GS",
+                            DefaultName = "South Georgia and the South Sandwich Islands"
+                        },
+                        new
+                        {
+                            Id = 208,
+                            Code = "SS",
+                            DefaultName = "South Sudan"
+                        },
+                        new
+                        {
+                            Id = 209,
+                            Code = "ES",
+                            DefaultName = "Spain"
+                        },
+                        new
+                        {
+                            Id = 210,
+                            Code = "LK",
+                            DefaultName = "Sri Lanka"
+                        },
+                        new
+                        {
+                            Id = 211,
+                            Code = "SD",
+                            DefaultName = "Sudan"
+                        },
+                        new
+                        {
+                            Id = 212,
+                            Code = "SR",
+                            DefaultName = "Suriname"
+                        },
+                        new
+                        {
+                            Id = 213,
+                            Code = "SJ",
+                            DefaultName = "Svalbard and Jan Mayen"
+                        },
+                        new
+                        {
+                            Id = 214,
+                            Code = "SZ",
+                            DefaultName = "Swaziland"
+                        },
+                        new
+                        {
+                            Id = 215,
+                            Code = "SE",
+                            DefaultName = "Sweden"
+                        },
+                        new
+                        {
+                            Id = 216,
+                            Code = "CH",
+                            DefaultName = "Switzerland"
+                        },
+                        new
+                        {
+                            Id = 217,
+                            Code = "SY",
+                            DefaultName = "Syrian Arab Republic"
+                        },
+                        new
+                        {
+                            Id = 218,
+                            Code = "TW",
+                            DefaultName = "Taiwan, Province of China"
+                        },
+                        new
+                        {
+                            Id = 219,
+                            Code = "TJ",
+                            DefaultName = "Tajikistan"
+                        },
+                        new
+                        {
+                            Id = 220,
+                            Code = "TZ",
+                            DefaultName = "Tanzania, United Republic of"
+                        },
+                        new
+                        {
+                            Id = 221,
+                            Code = "TH",
+                            DefaultName = "Thailand"
+                        },
+                        new
+                        {
+                            Id = 222,
+                            Code = "TL",
+                            DefaultName = "Timor-Leste"
+                        },
+                        new
+                        {
+                            Id = 223,
+                            Code = "TG",
+                            DefaultName = "Togo"
+                        },
+                        new
+                        {
+                            Id = 224,
+                            Code = "TK",
+                            DefaultName = "Tokelau"
+                        },
+                        new
+                        {
+                            Id = 225,
+                            Code = "TO",
+                            DefaultName = "Tonga"
+                        },
+                        new
+                        {
+                            Id = 226,
+                            Code = "TT",
+                            DefaultName = "Trinidad and Tobago"
+                        },
+                        new
+                        {
+                            Id = 227,
+                            Code = "TN",
+                            DefaultName = "Tunisia"
+                        },
+                        new
+                        {
+                            Id = 228,
+                            Code = "TR",
+                            DefaultName = "Turkey"
+                        },
+                        new
+                        {
+                            Id = 229,
+                            Code = "TM",
+                            DefaultName = "Turkmenistan"
+                        },
+                        new
+                        {
+                            Id = 230,
+                            Code = "TC",
+                            DefaultName = "Turks and Caicos Islands"
+                        },
+                        new
+                        {
+                            Id = 231,
+                            Code = "TV",
+                            DefaultName = "Tuvalu"
+                        },
+                        new
+                        {
+                            Id = 232,
+                            Code = "UG",
+                            DefaultName = "Uganda"
+                        },
+                        new
+                        {
+                            Id = 233,
+                            Code = "UA",
+                            DefaultName = "Ukraine"
+                        },
+                        new
+                        {
+                            Id = 234,
+                            Code = "AE",
+                            DefaultName = "United Arab Emirates"
+                        },
+                        new
+                        {
+                            Id = 235,
+                            Code = "GB",
+                            DefaultName = "United Kingdom"
+                        },
+                        new
+                        {
+                            Id = 236,
+                            Code = "US",
+                            DefaultName = "United States"
+                        },
+                        new
+                        {
+                            Id = 237,
+                            Code = "UM",
+                            DefaultName = "United States Minor Outlying Islands"
+                        },
+                        new
+                        {
+                            Id = 238,
+                            Code = "UY",
+                            DefaultName = "Uruguay"
+                        },
+                        new
+                        {
+                            Id = 239,
+                            Code = "UZ",
+                            DefaultName = "Uzbekistan"
+                        },
+                        new
+                        {
+                            Id = 240,
+                            Code = "VU",
+                            DefaultName = "Vanuatu"
+                        },
+                        new
+                        {
+                            Id = 241,
+                            Code = "VE",
+                            DefaultName = "Venezuela, Bolivarian Republic of"
+                        },
+                        new
+                        {
+                            Id = 242,
+                            Code = "VN",
+                            DefaultName = "Viet Nam"
+                        },
+                        new
+                        {
+                            Id = 243,
+                            Code = "VG",
+                            DefaultName = "Virgin Islands, British"
+                        },
+                        new
+                        {
+                            Id = 244,
+                            Code = "VI",
+                            DefaultName = "Virgin Islands, U.S."
+                        },
+                        new
+                        {
+                            Id = 245,
+                            Code = "WF",
+                            DefaultName = "Wallis and Futuna"
+                        },
+                        new
+                        {
+                            Id = 246,
+                            Code = "EH",
+                            DefaultName = "Western Sahara"
+                        },
+                        new
+                        {
+                            Id = 247,
+                            Code = "YE",
+                            DefaultName = "Yemen"
+                        },
+                        new
+                        {
+                            Id = 248,
+                            Code = "ZM",
+                            DefaultName = "Zambia"
+                        },
+                        new
+                        {
+                            Id = 249,
+                            Code = "ZW",
+                            DefaultName = "Zimbabwe"
+                        });
+                });
+
+            modelBuilder.Entity("Graduation.Core.CountryLocalization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("LanguageId", "CountryId")
+                        .IsUnique();
+
+                    b.ToTable("sys_CountryLocalizations");
+                });
+
             modelBuilder.Entity("Graduation.Core.Data.DisabilityAid", b =>
                 {
                     b.Property<int>("Id")
@@ -2148,6 +3686,61 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                     b.ToTable("edu_QualificationTypeLocalizations");
                 });
 
+            modelBuilder.Entity("Graduation.Core.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("City")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Prefecture")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RegistrationId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("RegistrationId")
+                        .IsUnique();
+
+                    b.ToTable("edu_Students");
+                });
+
             modelBuilder.Entity("Graduation.Core.AbilityLocalization", b =>
                 {
                     b.HasOne("Graduation.Core.Ability", "Ability")
@@ -2163,6 +3756,25 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                         .IsRequired();
 
                     b.Navigation("Ability");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Graduation.Core.CountryLocalization", b =>
+                {
+                    b.HasOne("Graduation.Core.Country", "Country")
+                        .WithMany("CountryLocalizations")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Graduation.Core.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
 
                     b.Navigation("Language");
                 });
@@ -2311,9 +3923,25 @@ namespace Graduation.Core.MariaDB.Migrations.Education
                     b.Navigation("QualificationType");
                 });
 
+            modelBuilder.Entity("Graduation.Core.Student", b =>
+                {
+                    b.HasOne("Graduation.Core.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
             modelBuilder.Entity("Graduation.Core.Ability", b =>
                 {
                     b.Navigation("AbilityLocalizations");
+                });
+
+            modelBuilder.Entity("Graduation.Core.Country", b =>
+                {
+                    b.Navigation("CountryLocalizations");
                 });
 
             modelBuilder.Entity("Graduation.Core.Data.DisabilityAid", b =>
