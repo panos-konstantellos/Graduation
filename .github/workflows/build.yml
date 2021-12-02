@@ -44,6 +44,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ntellos13_Graduation" /o:"devnt" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="Graduation.Core.Sqlite/**/*,Graduation.Core.MariaDB/**/*" /d:sonar.cpd.exclusions="Graduation.Core.Sqlite/**/*,Graduation.Core.MariaDB/**/*" /d:sonar.coverage.exclusions="Graduation.Core.Sqlite/**/*,Graduation.Core.MariaDB/**/*"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ntellos13_Graduation" /o:"devnt" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="Graduation.Core.Sqlite/**/*,Graduation.Core.MariaDB/**/*" /d:sonar.cpd.exclusions="Graduation.Core.Sqlite/**/*,Graduation.Core.MariaDB/**/*" /d:sonar.coverage.exclusions="**/*.*"
           dotnet build source/Graduation/Graduation.sln -c Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
