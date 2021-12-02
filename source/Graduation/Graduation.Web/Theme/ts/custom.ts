@@ -347,59 +347,58 @@ class FormStore
             {
                 event.preventDefault();
                 event.stopPropagation();
+
+                return;
             }
-            else
+
+            let key = Object.keys(form).find(x => x.toLowerCase() === ((element as any).type === 'radio' ? (element as any).name.toLowerCase() : element.id.toLowerCase()));
+            if(!key)
             {
-                let key = Object.keys(form).find(x => x.toLowerCase() === ((element as any).type === 'radio' ? (element as any).name.toLowerCase() : element.id.toLowerCase()));
-                if(!key)
-                {
-                    return;
-                }
+                return;
+            }
 
-                let value;
+            let value;
 
-                switch (true)
-                {
-                    case element instanceof HTMLSelectElement:
-                    case element instanceof HTMLInputElement:
-                    case element instanceof HTMLTextAreaElement:
+            switch (true)
+            {
+                case element instanceof HTMLSelectElement:
+                case element instanceof HTMLInputElement:
+                case element instanceof HTMLTextAreaElement:
 
-                        if(isCheckbox(element as HTMLInputElement))
+                    if(isCheckbox(element as HTMLInputElement))
+                    {
+                        value = (element as any).checked;
+                    }
+                    else if(isRadio(element as HTMLInputElement))
+                    {
+                        let valueText = element.id.replace((element as any).name, '').replace('-', '');
+
+                        if(valueText === 'true' || valueText === 'false')
                         {
-                            value = (element as any).checked;
-                        }
-                        else if(isRadio(element as HTMLInputElement))
-                        {
-                            let valueText = element.id.replace((element as any).name, '').replace('-', '');
-
-                            if(valueText === 'true' || valueText === 'false')
-                            {
-                                value = valueText === 'true';
-                            }
-                            else
-                            {
-                                value = valueText;
-                            }
-                        }
-                        else if(isNumber(element as HTMLInputElement))
-                        {
-                            value = Number((element as any).value);
+                            value = valueText === 'true';
                         }
                         else
                         {
-                            value = (element as any).value;
+                            value = valueText;
                         }
+                    }
+                    else if(isNumber(element as HTMLInputElement))
+                    {
+                        value = Number((element as any).value);
+                    }
+                    else
+                    {
+                        value = (element as any).value;
+                    }
 
-                        break;
-                    default:
-                        throw new Error('invalid element');
-                }
-
-                form[key] = value;
-
-                store.Set(form);
-
+                    break;
+                default:
+                    throw new Error('invalid element');
             }
+
+            form[key] = value;
+
+            store.Set(form);
 
         };
 

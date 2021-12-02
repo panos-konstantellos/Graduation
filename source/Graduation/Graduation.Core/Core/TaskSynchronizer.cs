@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,30 +21,40 @@ namespace Graduation.Core
         }
     }
 
-    public class TaskSynchronizer
+    public sealed class TaskSynchronizer
     {
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
-        public async Task LockAsync(Func<Task> fn, CancellationToken cancellationToken)
+        public Task LockAsync(Func<Task> fn, CancellationToken cancellationToken)
+        {
+            if (cancellationToken == null)
+            {
+                throw new ArgumentNullException(nameof(cancellationToken));
+            }
+
+            return this.DoLockAsync(fn, cancellationToken);
+        }
+        
+        public Task<T> LockAsync<T>(Func<Task<T>> fn, CancellationToken cancellationToken)
         {
             if (cancellationToken == null)
             {
                 throw new ArgumentNullException(nameof(cancellationToken));
             }
             
+            return DoLockAsync(fn, cancellationToken);
+        }
+
+        private async Task DoLockAsync(Func<Task> fn, CancellationToken cancellationToken)
+        {
             using (new TaskLockObject(this._semaphore, cancellationToken))
             {
                 await fn();
             }
         }
-        
-        public async Task<T> LockAsync<T>(Func<Task<T>> fn, CancellationToken cancellationToken)
+
+        private async Task<T> DoLockAsync<T>(Func<Task<T>> fn, CancellationToken cancellationToken)
         {
-            if (cancellationToken == null)
-            {
-                throw new ArgumentNullException(nameof(cancellationToken));
-            }
-            
             using (new TaskLockObject(this._semaphore, cancellationToken))
             {
                 return await fn();

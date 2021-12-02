@@ -47,7 +47,7 @@ class TextControl extends Control<ITextControlDefinition>
 
     public Bind(): void
     {
-
+        // This is intentional
     }
 }
 

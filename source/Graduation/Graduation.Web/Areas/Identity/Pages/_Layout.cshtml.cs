@@ -6,7 +6,7 @@ namespace Graduation.Web.Areas.Identity.Pages
     {
         public void OnGet()
         {
-            
+            // No need to run code here.
         }
     }
 }

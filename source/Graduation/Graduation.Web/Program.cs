@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Hosting;
 
 namespace Graduation.Web
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

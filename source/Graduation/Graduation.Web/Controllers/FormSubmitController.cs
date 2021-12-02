@@ -10,7 +10,6 @@ using Graduation.Core;
 using Graduation.Web.Models;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 using Newtonsoft.Json;
@@ -34,22 +33,10 @@ namespace Graduation.Web.Controllers
         {
             var clone = JsonConvert.DeserializeObject<FormSubmitRequest>(JsonConvert.SerializeObject(request));
 
-            if (clone == null)
-            {
-                throw new ArgumentNullException(nameof(clone));
-            }
-
-            // QualificationType qualificationType;  
             if (clone.QualificationType != "other")
             {
                 clone.QualificationTypeText = string.Empty;
             }
-            // else
-            // {
-            //     qualificationType = await this._context.QualificationTypes.FirstOrDefaultAsync(x =>
-            //         x.QualificationTypeLocalizations.Any(l => l.Name == clone.QualificationType) ||
-            //         x.DefaultName == clone.QualificationType);
-            // }
 
             if (clone.TeacherSpeech == false)
             {

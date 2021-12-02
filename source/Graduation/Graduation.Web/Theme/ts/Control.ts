@@ -32,6 +32,7 @@ class Control<T extends IControlDefinition>
 
     public Build(): void
     {
+        // This is intentional
     }
 
     public Render(wrapper: HTMLElement): void
@@ -47,6 +48,7 @@ class Control<T extends IControlDefinition>
     
     public Bind(): void
     {
+        // This is intentional
     }
 }
 

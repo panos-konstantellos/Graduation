@@ -6,7 +6,7 @@ Live demo is available [here](https://graduation.devnt.gr/). Thesis document is 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Build Status
-[![.NET](https://github.com/ntellos13/Graduation/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ntellos13/Graduation/actions/workflows/dotnet.yml)
+[![.NET](https://github.com/ntellos13/Graduation/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ntellos13/Graduation/actions/workflows/dotnet.yml)[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ntellos13_Graduation&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ntellos13_Graduation)
 
 ## Getting Started
 
