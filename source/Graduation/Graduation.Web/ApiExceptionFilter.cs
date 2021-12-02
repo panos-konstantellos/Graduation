@@ -11,6 +11,7 @@ namespace Graduation.Web
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
+            // No need to run code before method execution.
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

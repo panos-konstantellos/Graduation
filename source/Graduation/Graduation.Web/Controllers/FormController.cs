@@ -75,7 +75,7 @@ namespace Graduation.Web.Controllers
                     QualificationTypes = qualificationTypes
                         .Select(x => new QualificationTypeModel
                         {
-                            Name = x?.QualificationTypeLocalizations?.FirstOrDefault(l => l.LanguageId == 1)?.Name ?? x.DefaultName
+                            Name = x?.QualificationTypeLocalizations?.FirstOrDefault(l => l.LanguageId == 1)?.Name ?? x?.DefaultName
                         })
                         .ToList()
                 };
@@ -208,19 +208,20 @@ namespace Graduation.Web.Controllers
 
             var port = host.Port ?? -1;
 
-            if (scheme.Equals("http", StringComparison.OrdinalIgnoreCase) && port == 80)
-            {
-                port = -1;
-            }
-
-            if (scheme.Equals("https", StringComparison.OrdinalIgnoreCase) && port == 443)
+            if (scheme.Equals("http", StringComparison.OrdinalIgnoreCase) && port == 80
+                || scheme.Equals("https", StringComparison.OrdinalIgnoreCase) && port == 443)
             {
                 port = -1;
             }
 
             uriBuilder.Scheme = scheme;
             uriBuilder.Host = host.Host;
-            uriBuilder.Port = host.Port ?? -1;
+
+            if(port > 0)
+            {
+                uriBuilder.Port = port;
+            }
+            
             uriBuilder.Path = request.Path.HasValue ? request.Path.Value : string.Empty;
             uriBuilder.Query = request.QueryString.HasValue ? request.QueryString.Value : string.Empty;
 
